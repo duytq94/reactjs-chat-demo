@@ -1,0 +1,71 @@
+<<<<<<< HEAD
+# OSX
+#
+.DS_Store
+
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+
+# Android/IntelliJ
+#
+build/
+.idea
+.gradle
+local.properties
+*.iml
+
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
+
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+.tmp/
+android/app/src/main/gen/
+
+ios/Pods
+Podfile.lock
+ios/*.xcworkspace
+
+yarn.lock
+.vscode/.react
+ios-config.json
+Script/**/*.apk
+Script/**/*.ipa
+Script/**/*.plist
+/etc
+=======
+# Add any directories, files, or patterns you don't want to be tracked by version control
+>>>>>>> f14a76a2e9e3a0c25e0b0174d902ac4b13a8bb23
