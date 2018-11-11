@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { myFirebase } from '../../Config/MyFirebase';
 import images from '../Themes/Images';
 import './Main.css';
+import ReactLoading from 'react-loading';
 
 class Main extends Component {
 
@@ -15,7 +16,7 @@ class Main extends Component {
     }
   }
 
-  onLogoutPress = () => {
+  onLogoutClick = () => {
     this.setState({
       isOpenDialogConfirmLogout: true
     })
@@ -39,12 +40,17 @@ class Main extends Component {
     })
   }
 
+  onProfileClick = () => {
+    this.props.history.push('/profile')
+  }
+
   render() {
     return (
       <div className="root">
         <div className='header'>
-          MAIN
-          <img className='icLogout' alt={'An icon logout'} src={images.ic_logout} onClick={this.onLogoutPress} />
+          <text>MAIN</text>
+          <img className='icProfile' alt={'An icon default avatar'} src={images.ic_default_avatar} onClick={this.onProfileClick} />
+          <img className='icLogout' alt={'An icon logout'} src={images.ic_logout} onClick={this.onLogoutClick} />
         </div>
 
         {this.state.isOpenDialogConfirmLogout ?
@@ -53,6 +59,12 @@ class Main extends Component {
           </div> :
           null
         }
+
+        {this.state.isLoading ?
+          <div className='viewLoading' >
+            <ReactLoading type={'spin'} color={'#203152'} height={'3%'} width={'3%'} />
+          </div> :
+          null}
 
       </div>
     );

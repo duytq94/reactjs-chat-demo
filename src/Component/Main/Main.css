@@ -11,6 +11,7 @@
   background-color: #f5a623;
   padding: 20px;
   box-shadow: 0px 4px 4px #808888;
+  flex-direction: row;
 }
 
 .icLogout {
@@ -18,7 +19,37 @@
   height: 25px;
   position: absolute;
   right: 0;
-  margin-right: 20px;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.icLogout:active {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 0;
+  margin-right: 30px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.icProfile {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 0;
+  margin-right: 80px;
+  cursor: pointer;
+}
+
+.icProfile:active {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 0;
+  margin-right: 80px;
+  cursor: pointer;
+  opacity: 0.5;
 }
 
 .viewCoverScreen {
@@ -65,6 +96,7 @@
   border: 0px;
   color: white;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .btnYes:active {
@@ -76,6 +108,7 @@
   border: 0px;
   color: white;
   border-radius: 8px;
+  cursor: pointer;
   opacity: 0.5;
 }
 
@@ -88,6 +121,7 @@
   border: 0px;
   color: white;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .btnNo:active {
@@ -99,5 +133,6 @@
   border: 0px;
   color: white;
   border-radius: 8px;
+  cursor: pointer;
   opacity: 0.5;
 }
