@@ -16,6 +16,8 @@ class Root extends Component {
       case 1:
         toast.success(message)
         break
+      default:
+        break
     }
   }
 

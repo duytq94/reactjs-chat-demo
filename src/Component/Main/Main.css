@@ -20,3 +20,84 @@
   right: 0;
   margin-right: 20px;
 }
+
+.viewCoverScreen {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titleDialogConfirmLogout {
+  color: white;
+  background-color: #f5a623;
+  font-weight: bold;
+  padding: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  width: 300px;
+  font-size: 18px;
+}
+
+.viewWrapButtonDialogConfirmLogout {
+  flex-direction: row;
+  height: 100px;
+  width: 300px;
+  background-color: white;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.btnYes {
+  width: 100px;
+  font-weight: bold;
+  margin-right: 20px;
+  padding: 5px;
+  background-color: #203152;
+  border: 0px;
+  color: white;
+  border-radius: 8px;
+}
+
+.btnYes:active {
+  width: 100px;
+  font-weight: bold;
+  margin-right: 20px;
+  padding: 5px;
+  background-color: #203152;
+  border: 0px;
+  color: white;
+  border-radius: 8px;
+  opacity: 0.5;
+}
+
+.btnNo {
+  width: 100px;
+  font-weight: bold;
+  margin-left: 20px;
+  padding: 5px;
+  background-color: #dd4b39;
+  border: 0px;
+  color: white;
+  border-radius: 8px;
+}
+
+.btnNo:active {
+  width: 100px;
+  font-weight: bold;
+  margin-left: 20px;
+  padding: 5px;
+  background-color: #dd4b39;
+  border: 0px;
+  color: white;
+  border-radius: 8px;
+  opacity: 0.5;
+}

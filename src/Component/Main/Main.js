@@ -10,11 +10,18 @@ class Main extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isLoading: false
+      isLoading: false,
+      isOpenDialogConfirmLogout: false,
     }
   }
 
   onLogoutPress = () => {
+    this.setState({
+      isOpenDialogConfirmLogout: true
+    })
+  }
+
+  doLogout = () => {
     this.setState({ isLoading: true })
     myFirebase.auth().signOut().then(() => {
       this.setState({ isLoading: false })
@@ -26,16 +33,49 @@ class Main extends Component {
     });
   }
 
+  hideDialogConfirmLogout = () => {
+    this.setState({
+      isOpenDialogConfirmLogout: false
+    })
+  }
+
   render() {
     return (
       <div className="root">
         <div className='header'>
           MAIN
-          <img className='icLogout' src={images.ic_logout} onClick={this.onLogoutPress} />
+          <img className='icLogout' alt={'An icon logout'} src={images.ic_logout} onClick={this.onLogoutPress} />
         </div>
+
+        {this.state.isOpenDialogConfirmLogout ?
+          <div className='viewCoverScreen'>
+            {this.renderDialogConfirmLogout()}
+          </div> :
+          null
+        }
 
       </div>
     );
+  }
+
+  renderDialogConfirmLogout = () => {
+    return (
+      <div>
+        <div className='titleDialogConfirmLogout'>
+          Are you sure to logout?
+        </div>
+        <div className='viewWrapButtonDialogConfirmLogout'>
+          <button
+            className='btnYes'
+            onClick={this.doLogout}
+          >YES</button>
+          <button
+            className='btnNo'
+            onClick={this.hideDialogConfirmLogout}
+          >CANCEL</button>
+        </div>
+      </div>
+    )
   }
 }
 
