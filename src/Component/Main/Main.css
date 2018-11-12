@@ -24,12 +24,6 @@
 }
 
 .icLogout:active {
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  right: 0;
-  margin-right: 30px;
-  cursor: pointer;
   opacity: 0.5;
 }
 
@@ -43,12 +37,6 @@
 }
 
 .icProfile:active {
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  right: 0;
-  margin-right: 80px;
-  cursor: pointer;
   opacity: 0.5;
 }
 
@@ -100,15 +88,6 @@
 }
 
 .btnYes:active {
-  width: 100px;
-  font-weight: bold;
-  margin-right: 20px;
-  padding: 5px;
-  background-color: #203152;
-  border: 0px;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
   opacity: 0.5;
 }
 
@@ -125,14 +104,5 @@
 }
 
 .btnNo:active {
-  width: 100px;
-  font-weight: bold;
-  margin-left: 20px;
-  padding: 5px;
-  background-color: #dd4b39;
-  border: 0px;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
   opacity: 0.5;
 }

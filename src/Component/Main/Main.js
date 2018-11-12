@@ -48,7 +48,7 @@ class Main extends Component {
     return (
       <div className="root">
         <div className='header'>
-          <text>MAIN</text>
+          <span>MAIN</span>
           <img className='icProfile' alt={'An icon default avatar'} src={images.ic_default_avatar} onClick={this.onProfileClick} />
           <img className='icLogout' alt={'An icon logout'} src={images.ic_logout} onClick={this.onLogoutClick} />
         </div>
