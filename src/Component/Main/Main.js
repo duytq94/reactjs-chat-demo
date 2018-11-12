@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
-import { myFirebase } from '../../Config/MyFirebase'
+import { myFirebase, myFirestore } from '../../Config/MyFirebase'
 import images from '../Themes/Images'
 import './Main.css'
 import ReactLoading from 'react-loading'
@@ -13,6 +13,7 @@ class Main extends Component {
       isLoading: false,
       isOpenDialogConfirmLogout: false
     }
+    this.listUser = []
   }
 
   componentDidMount() {
@@ -22,6 +23,16 @@ class Main extends Component {
   checkLogin = () => {
     if (!localStorage.getItem('id')) {
       this.props.history.push('/')
+    } else {
+      this.getListUser()
+    }
+  }
+
+  getListUser = async () => {
+    const result = await myFirestore.collection('users').get()
+    if (result.docs.length > 0) {
+      this.listUser = [...result.docs]
+      this.setState({})
     }
   }
 
@@ -59,6 +70,18 @@ class Main extends Component {
     this.props.history.push('/profile')
   }
 
+  renderListUser = () => {
+    if (this.listUser.length > 0) {
+      let viewListUser = []
+      for (let i = 0; i < this.listUser.length; i++) {
+        viewListUser.push(<li>{this.listUser[i].data().nickname}</li>)
+      }
+      return viewListUser
+    } else {
+      return null
+    }
+  }
+
   render() {
     return (
       <div className="root">
@@ -77,6 +100,8 @@ class Main extends Component {
             onClick={this.onLogoutClick}
           />
         </div>
+
+        {this.renderListUser()}
 
         {this.state.isOpenDialogConfirmLogout ? (
           <div className="viewCoverScreen">
