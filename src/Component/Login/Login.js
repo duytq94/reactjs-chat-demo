@@ -20,8 +20,7 @@ class Login extends Component {
   }
 
   checkLogin = () => {
-    let user = myFirebase.auth().currentUser
-    if (user) {
+    if (localStorage.getItem('id')) {
       this.setState({ isLoading: false }, () => {
         this.setState({ isLoading: false })
         this.props.showToast(1, 'Login success')

@@ -20,6 +20,16 @@ class Profile extends Component {
     this.newPhotoUrl = ''
   }
 
+  componentDidMount() {
+    this.checkLogin()
+  }
+
+  checkLogin = () => {
+    if (!localStorage.getItem('id')) {
+      this.props.history.push('/')
+    }
+  }
+
   onChangeNickname = event => {
     this.setState({ nickname: event.target.value })
   }
@@ -111,7 +121,7 @@ class Profile extends Component {
         <span className="textLabel">Nickname:</span>
         <input
           className="textInput"
-          value={this.state.nickname}
+          value={this.state.nickname ? this.state.nickname : ''}
           placeholder="Your nickname..."
           onChange={this.onChangeNickname}
         />
