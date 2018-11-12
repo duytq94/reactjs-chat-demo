@@ -45,7 +45,6 @@ class Login extends Component {
         this.props.showToast(0, 'User info not available')
       }
     }).catch((err) => {
-      this.setState({ isLoading: false })
       this.props.showToast(0, err.message)
     })
   }
