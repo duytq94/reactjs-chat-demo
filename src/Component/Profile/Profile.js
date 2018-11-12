@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import ReactLoading from 'react-loading'
 import { withRouter } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
+import { myFireStorage, myFirestore } from '../../Config/MyFirebase'
 import images from './../Themes/Images'
 import './Profile.css'
-import { myFireStorage, myFirestore } from '../../Config/MyFirebase'
-import { toast } from 'react-toastify'
 
 class Profile extends Component {
   constructor(props) {
@@ -17,7 +16,7 @@ class Profile extends Component {
       aboutMe: localStorage.getItem('aboutMe'),
       photoUrl: localStorage.getItem('photoUrl')
     }
-    this.newAvatar = {}
+    this.newAvatar = null
     this.newPhotoUrl = ''
   }
 
@@ -124,7 +123,7 @@ class Profile extends Component {
           onChange={this.onChangeAboutMe}
         />
 
-        <button className="btnUpdate" type="submit" onClick={this.uploadAvatar}>
+        <button className="btnUpdate" onClick={this.uploadAvatar}>
           UPDATE
         </button>
 

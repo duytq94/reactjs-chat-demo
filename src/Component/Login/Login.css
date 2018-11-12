@@ -38,9 +38,14 @@
   border-radius: 8px;
   font-weight: bold;
   margin-top: 200px;
+  outline: 0;
   cursor: pointer;
 }
 
 .btnLogin:active {
   opacity: 0.5;
+}
+
+.btnLogin:focus {
+  outline: 0;
 }

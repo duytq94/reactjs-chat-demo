@@ -83,12 +83,16 @@
   background-color: #203152;
   border: 0px;
   color: white;
-  border-radius: 8px;
+  border-radius: 3px;
   cursor: pointer;
 }
 
 .btnYes:active {
   opacity: 0.5;
+}
+
+.btnYes:focus {
+  outline: 0;
 }
 
 .btnNo {
@@ -99,10 +103,14 @@
   background-color: #dd4b39;
   border: 0px;
   color: white;
-  border-radius: 8px;
+  border-radius: 3px;
   cursor: pointer;
 }
 
 .btnNo:active {
   opacity: 0.5;
+}
+
+.btnNo:focus {
+  outline: 0;
 }
