@@ -14,6 +14,12 @@
   flex-direction: row;
 }
 
+.body {
+  display: flex;
+  flex-direction: 'row';
+  padding-top: 5px;
+}
+
 .icLogout {
   width: 25px;
   height: 25px;
@@ -39,6 +45,8 @@
 .icProfile:active {
   opacity: 0.5;
 }
+
+/* Dialog confirm */
 
 .viewCoverScreen {
   position: absolute;
@@ -113,4 +121,128 @@
 
 .btnNo:focus {
   outline: 0;
+}
+
+/* Item user */
+
+.viewListUser {
+  overflow-y: scroll;
+  max-height: 92vh;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.viewWrapItem {
+  border: none;
+  display: flex;
+  flex-direction: 'row';
+  background-color: #E8E8E8;
+  width: 300px;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewWrapItem:active {
+  opacity: 0.5;
+}
+
+.viewWrapItem:focus {
+  outline: 0;
+}
+
+.viewAvatarItem {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.viewWrapContentItem {
+  flex-direction: column;
+  display: flex;
+  flex: 1;
+  margin-left: 15px;
+  color: #203152;
+  word-wrap: break-word;
+}
+
+.textItem {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 220px;
+  text-align: left
+}
+
+/* Welcome board */
+
+.viewWelcomeBoard {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.textTitleWelcome {
+  font-size: 22px;
+  font-weight: bold;
+  color: #203152;
+}
+
+.textDesciptionWelcome {
+  font-size: 20px;
+  color: #203152;
+  margin-bottom: 200px;
+}
+
+.avatarWelcome {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Chat board */
+
+.viewChatBoard {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+
+.viewListContentChat {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.viewBottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+}
+
+.icOpenGallery {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+}
+
+.icOpenGallery:active {
+  opacity: 0.5;
+}
+
+.viewInput {
+  flex: 1;
 }
