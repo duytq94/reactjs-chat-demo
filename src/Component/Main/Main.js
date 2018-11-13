@@ -60,7 +60,7 @@ class Main extends Component {
           this.props.history.push('/')
         })
       })
-      .catch(function (err) {
+      .catch(function(err) {
         this.setState({ isLoading: false })
         this.props.showToast(0, err.message)
       })
@@ -79,22 +79,32 @@ class Main extends Component {
   renderListUser = () => {
     if (this.listUser.length > 0) {
       let viewListUser = []
-      for (let i = 0; i < this.listUser.length; i++) {
+      this.listUser.forEach((item, index) => {
         viewListUser.push(
-          <button className='viewWrapItem' key={this.listUser[i].data().id}
+          <button
+            className="viewWrapItem"
+            key={item.data().id}
             onClick={() => {
-              this.currentPeerUser = this.listUser[i].data()
+              this.currentPeerUser = item.data()
               this.setState({})
             }}
           >
-            <img className='viewAvatarItem' src={this.listUser[i].data().photoUrl} alt='icon avatar' />
-            <div className='viewWrapContentItem'>
-              <span className='textItem'>{`Nickname: ${this.listUser[i].data().nickname}`}</span>
-              <span className='textItem'>{`About me: ${this.listUser[i].data().abouteMe ? this.listUser[i].data().abouteMe : 'Not available'}`}</span>
+            <img
+              className="viewAvatarItem"
+              src={item.data().photoUrl}
+              alt="icon avatar"
+            />
+            <div className="viewWrapContentItem">
+              <span className="textItem">{`Nickname: ${
+                item.data().nickname
+              }`}</span>
+              <span className="textItem">{`About me: ${
+                item.data().abouteMe ? item.data().abouteMe : 'Not available'
+              }`}</span>
             </div>
           </button>
         )
-      }
+      })
       return viewListUser
     } else {
       return null
@@ -103,14 +113,22 @@ class Main extends Component {
 
   renderChatBoard = () => {
     return (
-      <div className='viewChatBoard'>
-        <span>HELLO</span>
-        <div className='viewListContentChat'></div>
-        <div className='viewBottom'>
-          <img className='icOpenGallery' src={images.ic_photo} alt='icon open gallery' />
-          <img className='icOpenGallery' src={images.ic_sticker} alt='icon open sticker' />
-          <input className='viewInput' />
-          <img className='icOpenGallery' src={images.ic_send} alt='icon send' />
+      <div className="viewChatBoard">
+        <span className='viewHeaderChatBoard'>{this.currentPeerUser.nickname}</span>
+        <div className="viewListContentChat" />
+        <div className="viewBottom">
+          <img
+            className="icOpenGallery"
+            src={images.ic_photo}
+            alt="icon open gallery"
+          />
+          <img
+            className="icOpenSticker"
+            src={images.ic_sticker}
+            alt="icon open sticker"
+          />
+          <input className="viewInput" placeholder="Type your message..." />
+          <img className="icSend" src={images.ic_send} alt="icon send" />
         </div>
       </div>
     )
@@ -118,10 +136,18 @@ class Main extends Component {
 
   renderWelcomeBoard = () => {
     return (
-      <div className='viewWelcomeBoard'>
-        <span className='textTitleWelcome'>{`Welcome, ${this.currentUserNickname}`}</span>
-        <img className='avatarWelcome' src={this.currentUserAvatar} alt='icon avatar' />
-        <span className='textDesciptionWelcome'>Let's start talking. Great things might happen.</span>
+      <div className="viewWelcomeBoard">
+        <span className="textTitleWelcome">{`Welcome, ${
+          this.currentUserNickname
+        }`}</span>
+        <img
+          className="avatarWelcome"
+          src={this.currentUserAvatar}
+          alt="icon avatar"
+        />
+        <span className="textDesciptionWelcome">
+          Let's start talking. Great things might happen.
+        </span>
       </div>
     )
   }
@@ -129,33 +155,41 @@ class Main extends Component {
   render() {
     return (
       <div className="root">
+        {/* Header */}
         <div className="header">
           <span>MAIN</span>
           <img
             className="icProfile"
-            alt='An icon default avatar'
+            alt="An icon default avatar"
             src={images.ic_default_avatar}
             onClick={this.onProfileClick}
           />
           <img
             className="icLogout"
-            alt='An icon logout'
+            alt="An icon logout"
             src={images.ic_logout}
             onClick={this.onLogoutClick}
           />
         </div>
 
-        <div className='body'>
-          <div className='viewListUser'> {this.renderListUser()}</div>
-          <div className='viewWelcomeBoard'>{this.currentPeerUser ? this.renderChatBoard() : this.renderWelcomeBoard()}</div>
+        {/* Body */}
+        <div className="body">
+          <div className="viewListUser"> {this.renderListUser()}</div>
+          <div className="viewWelcomeBoard">
+            {this.currentPeerUser
+              ? this.renderChatBoard()
+              : this.renderWelcomeBoard()}
+          </div>
         </div>
 
+        {/* Dialog confirm */}
         {this.state.isOpenDialogConfirmLogout ? (
           <div className="viewCoverScreen">
             {this.renderDialogConfirmLogout()}
           </div>
         ) : null}
 
+        {/* Loading */}
         {this.state.isLoading ? (
           <div className="viewLoading">
             <ReactLoading

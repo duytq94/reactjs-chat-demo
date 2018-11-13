@@ -123,24 +123,40 @@
   outline: 0;
 }
 
-/* Item user */
+/* List user */
 
 .viewListUser {
   overflow-y: scroll;
-  max-height: 92vh;
+  max-height: 90vh;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.viewListUser::-webkit-scrollbar-track {
+  border: 1px solid #e8e8e8;
+  padding: 2px 0;
+  background-color: #e8e8e8;
+}
+
+.viewListUser::-webkit-scrollbar {
+  width: 6px;
+}
+
+.viewListUser::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #737272;
 }
 
 .viewWrapItem {
   border: none;
   display: flex;
   flex-direction: 'row';
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
   width: 300px;
   border-radius: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-top: 10px;
   padding: 10px;
   align-items: center;
@@ -177,7 +193,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 220px;
-  text-align: left
+  text-align: left;
 }
 
 /* Welcome board */
@@ -208,6 +224,7 @@
   border-radius: 50px;
   margin-top: 20px;
   margin-bottom: 20px;
+  object-fit: cover;
 }
 
 /* Chat board */
@@ -217,6 +234,13 @@
   flex: 1;
   flex-direction: column;
   width: 100%;
+}
+
+.viewHeaderChatBoard {
+  background-color: #e8e8e8;
+  padding: 10px;
+  font-weight: bold;
+  color: #203152;
 }
 
 .viewListContentChat {
@@ -230,19 +254,55 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 70px;
+  height: 50px;
+  background-color: #e8e8e8;
 }
 
 .icOpenGallery {
-  width: 40px;
-  height: 40px;
-  margin: 5px;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
 }
 
 .icOpenGallery:active {
   opacity: 0.5;
 }
 
+.icOpenSticker {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.icOpenSticker:active {
+  opacity: 0.5;
+}
+
+.icSend {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.icSend:active {
+  opacity: 0.5;
+}
+
 .viewInput {
   flex: 1;
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid #203152;
+  height: 30px;
+}
+
+.viewInput:focus {
+  outline: 0;
+}
+
+input::placeholder {
+  color: rgb(199, 199, 199);
 }
