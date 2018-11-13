@@ -199,11 +199,23 @@ class Main extends Component {
       this.listMessage.forEach((item, index) => {
         if (item.idFrom === this.currentUserId) {
           // Item right (my message)
-          viewListMessage.push(
-            <div className="viewWrapItemRight" key={item.timestamp}>
-              <span className="textContentItem">{item.content}</span>
-            </div>
-          )
+          if (item.type === 0) {
+            viewListMessage.push(
+              <div className="viewWrapItemRight" key={item.timestamp}>
+                <span className="textContentItem">{item.content}</span>
+              </div>
+            )
+          } else if (item.type === 1) {
+            viewListMessage.push(
+              <div className="viewWrapItemRight" key={item.timestamp}>
+                <img
+                  className="imgContentItem"
+                  src={item.content}
+                  alt="content message"
+                />
+              </div>
+            )
+          }
         } else {
           viewListMessage.push(
             <div className="viewWrapItemLeft" key={item.timestamp}>

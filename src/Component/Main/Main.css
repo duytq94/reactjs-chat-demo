@@ -381,6 +381,8 @@ input::placeholder {
   text-align: left;
 }
 
+/* Item text */
+
 .textContentItem {
   font-size: 14px;
   word-break: break-all;
@@ -388,4 +390,10 @@ input::placeholder {
 
 .viewListContentChat div:last-child {
   margin-bottom: 10px;
+}
+
+/* Item image */
+.imgContentItem {
+  height: 50px;
+  object-fit: cover;
 }
