@@ -11,6 +11,7 @@ class Main extends Component {
     super(props)
     this.state = {
       isLoading: true,
+      isLoadHistory: false,
       isOpenDialogConfirmLogout: false
     }
     this.currentUserId = localStorage.getItem('id')
@@ -18,6 +19,8 @@ class Main extends Component {
     this.currentUserNickname = localStorage.getItem('nickname')
     this.listUser = []
     this.currentPeerUser = null
+    this.groupChatId = null
+    this.listMessage = []
   }
 
   componentDidMount() {
@@ -40,6 +43,36 @@ class Main extends Component {
       this.listUser = [...result.docs]
       this.setState({ isLoading: false })
     }
+  }
+
+  getListHistory = () => {
+    this.listMessage.length = 0
+    this.setState({ isLoadHistory: true })
+    if (
+      this.hashString(this.currentUserId) <=
+      this.hashString(this.currentPeerUser.id)
+    ) {
+      this.groupChatId = `${this.currentUserId}-${this.currentPeerUser.id}`
+    } else {
+      this.groupChatId = `${this.currentPeerUser.id}-${this.currentUserId}`
+    }
+
+    myFirestore
+      .collection('messages')
+      .doc(this.groupChatId)
+      .collection(this.groupChatId)
+      .orderBy('timestamp', 'desc')
+      .limit(40)
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          this.listMessage.push(doc.data())
+        })
+        this.setState({ isLoadHistory: false })
+      })
+      .catch(err => {
+        console.log('Error getting documents', err)
+      })
   }
 
   onLogoutClick = () => {
@@ -86,7 +119,7 @@ class Main extends Component {
             key={item.data().id}
             onClick={() => {
               this.currentPeerUser = item.data()
-              this.setState({})
+              this.getListHistory()
             }}
           >
             <img
@@ -114,8 +147,22 @@ class Main extends Component {
   renderChatBoard = () => {
     return (
       <div className="viewChatBoard">
-        <span className='viewHeaderChatBoard'>{this.currentPeerUser.nickname}</span>
-        <div className="viewListContentChat" />
+        {/* Header */}
+        <div className="headerChatBoard">
+          <img
+            className="viewAvatarItem"
+            src={this.currentPeerUser.photoUrl}
+            alt="icon avatar"
+          />
+          <span className="textHeaderChatBoard">
+            {this.currentPeerUser.nickname}
+          </span>
+        </div>
+
+        {/* List message */}
+        <div className="viewListContentChat">{this.renderListMessage()}</div>
+
+        {/* View bottom */}
         <div className="viewBottom">
           <img
             className="icOpenGallery"
@@ -130,8 +177,45 @@ class Main extends Component {
           <input className="viewInput" placeholder="Type your message..." />
           <img className="icSend" src={images.ic_send} alt="icon send" />
         </div>
+
+        {/* Loading */}
+        {this.state.isLoadHistory ? (
+          <div className="viewLoading">
+            <ReactLoading
+              type={'spin'}
+              color={'#203152'}
+              height={'3%'}
+              width={'3%'}
+            />
+          </div>
+        ) : null}
       </div>
     )
+  }
+
+  renderListMessage = () => {
+    if (this.listMessage.length > 0) {
+      let viewListMessage = []
+      this.listMessage.forEach((item, index) => {
+        if (item.idFrom === this.currentUserId) {
+          // Item right (my message)
+          viewListMessage.push(
+            <div className="viewWrapItemRight" key={item.timestamp}>
+              <span className="textContentItem">{item.content}</span>
+            </div>
+          )
+        } else {
+          viewListMessage.push(
+            <div className="viewWrapItemLeft" key={item.timestamp}>
+              <span className="textContentItem">{item.content}</span>
+            </div>
+          )
+        }
+      })
+      return viewListMessage
+    } else {
+      return null
+    }
   }
 
   renderWelcomeBoard = () => {
@@ -175,7 +259,7 @@ class Main extends Component {
         {/* Body */}
         <div className="body">
           <div className="viewListUser"> {this.renderListUser()}</div>
-          <div className="viewWelcomeBoard">
+          <div className="viewBoard">
             {this.currentPeerUser
               ? this.renderChatBoard()
               : this.renderWelcomeBoard()}
@@ -218,6 +302,15 @@ class Main extends Component {
         </div>
       </div>
     )
+  }
+
+  hashString = str => {
+    let hash = 0
+    for (let i = 0; i < str.length; i++) {
+      hash += Math.pow(str.charCodeAt(i) * 31, str.length - i)
+      hash = hash & hash // Convert to 32bit integer
+    }
+    return hash
   }
 }
 
