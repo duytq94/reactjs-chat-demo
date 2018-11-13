@@ -93,7 +93,7 @@ class Main extends Component {
           this.props.history.push('/')
         })
       })
-      .catch(function(err) {
+      .catch(function (err) {
         this.setState({ isLoading: false })
         this.props.showToast(0, err.message)
       })
@@ -130,10 +130,10 @@ class Main extends Component {
             <div className="viewWrapContentItem">
               <span className="textItem">{`Nickname: ${
                 item.data().nickname
-              }`}</span>
+                }`}</span>
               <span className="textItem">{`About me: ${
                 item.data().abouteMe ? item.data().abouteMe : 'Not available'
-              }`}</span>
+                }`}</span>
             </div>
           </button>
         )
@@ -207,7 +207,7 @@ class Main extends Component {
             )
           } else if (item.type === 1) {
             viewListMessage.push(
-              <div className="viewWrapItemRight" key={item.timestamp}>
+              <div className="viewWrapItemRight2" key={item.timestamp}>
                 <img
                   className="imgContentItem"
                   src={item.content}
@@ -215,13 +215,46 @@ class Main extends Component {
                 />
               </div>
             )
+          } else {
+            viewListMessage.push(
+              <div className="viewWrapItemRight2" key={item.timestamp}>
+                <img
+                  className="imgContentItem"
+                  src={this.getGifImage(item.content)}
+                  alt="content message"
+                />
+              </div>
+            )
           }
         } else {
-          viewListMessage.push(
-            <div className="viewWrapItemLeft" key={item.timestamp}>
-              <span className="textContentItem">{item.content}</span>
-            </div>
-          )
+          // Item left (peer message)
+          if (item.type === 0) {
+            viewListMessage.push(
+              <div className="viewWrapItemLeft" key={item.timestamp}>
+                <span className="textContentItem">{item.content}</span>
+              </div>
+            )
+          } else if (item.type === 1) {
+            viewListMessage.push(
+              <div className="viewWrapItemLeft2" key={item.timestamp}>
+                <img
+                  className="imgContentItem"
+                  src={item.content}
+                  alt="content message"
+                />
+              </div>
+            )
+          } else {
+            viewListMessage.push(
+              <div className="viewWrapItemLeft2" key={item.timestamp}>
+                <img
+                  className="imgContentItem"
+                  src={this.getGifImage(item.content)}
+                  alt="content message"
+                />
+              </div>
+            )
+          }
         }
       })
       return viewListMessage
@@ -235,7 +268,7 @@ class Main extends Component {
       <div className="viewWelcomeBoard">
         <span className="textTitleWelcome">{`Welcome, ${
           this.currentUserNickname
-        }`}</span>
+          }`}</span>
         <img
           className="avatarWelcome"
           src={this.currentUserAvatar}
@@ -323,6 +356,29 @@ class Main extends Component {
       hash = hash & hash // Convert to 32bit integer
     }
     return hash
+  }
+
+  getGifImage = (value) => {
+    switch (value) {
+      case 'mimi1':
+        return images.mimi1
+      case 'mimi2':
+        return images.mimi2
+      case 'mimi3':
+        return images.mimi3
+      case 'mimi4':
+        return images.mimi4
+      case 'mimi5':
+        return images.mimi5
+      case 'mimi6':
+        return images.mimi6
+      case 'mimi7':
+        return images.mimi7
+      case 'mimi8':
+        return images.mimi8
+      case 'mimi9':
+        return images.mimi9
+    }
   }
 }
 

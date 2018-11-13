@@ -349,6 +349,7 @@ input::placeholder {
 }
 
 /* View item message */
+
 .viewWrapItemRight {
   width: 300px;
   height: auto;
@@ -357,10 +358,22 @@ input::placeholder {
   margin-right: 20px;
   margin-top: 10px;
   border-radius: 8px;
+  color: #203152;
+  text-align: left;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+.viewWrapItemRight2 {
+  width: 300px;
+  height: auto;
+  background-color: #e8e8e8;
+  align-self: flex-end;
+  margin-right: 20px;
+  margin-top: 10px;
+  border-radius: 8px;
   color: #203152;
   text-align: left;
 }
@@ -381,6 +394,18 @@ input::placeholder {
   text-align: left;
 }
 
+.viewWrapItemLeft2 {
+  width: 300px;
+  height: auto;
+  background-color: #203152;
+  align-self: flex-start;
+  margin-left: 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+  color: white;
+  text-align: left;
+}
+
 /* Item text */
 
 .textContentItem {
@@ -393,7 +418,10 @@ input::placeholder {
 }
 
 /* Item image */
+
 .imgContentItem {
-  height: 50px;
   object-fit: cover;
+  width: 300px;
+  height: 300px;
+  border-radius: 8px;
 }
