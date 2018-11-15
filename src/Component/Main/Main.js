@@ -5,6 +5,7 @@ import { myFirebase, myFirestore } from '../../Config/MyFirebase'
 import images from '../Themes/Images'
 import './Main.css'
 import ReactLoading from 'react-loading'
+import moment from 'moment'
 
 class Main extends Component {
   constructor(props) {
@@ -93,7 +94,7 @@ class Main extends Component {
           this.props.history.push('/')
         })
       })
-      .catch(function (err) {
+      .catch(function(err) {
         this.setState({ isLoading: false })
         this.props.showToast(0, err.message)
       })
@@ -130,10 +131,10 @@ class Main extends Component {
             <div className="viewWrapContentItem">
               <span className="textItem">{`Nickname: ${
                 item.data().nickname
-                }`}</span>
+              }`}</span>
               <span className="textItem">{`About me: ${
                 item.data().abouteMe ? item.data().abouteMe : 'Not available'
-                }`}</span>
+              }`}</span>
             </div>
           </button>
         )
@@ -201,13 +202,13 @@ class Main extends Component {
           // Item right (my message)
           if (item.type === 0) {
             viewListMessage.push(
-              <div className="viewWrapItemRight" key={item.timestamp}>
+              <div className="viewItemRight" key={item.timestamp}>
                 <span className="textContentItem">{item.content}</span>
               </div>
             )
           } else if (item.type === 1) {
             viewListMessage.push(
-              <div className="viewWrapItemRight2" key={item.timestamp}>
+              <div className="viewItemRight2" key={item.timestamp}>
                 <img
                   className="imgContentItem"
                   src={item.content}
@@ -217,7 +218,7 @@ class Main extends Component {
             )
           } else {
             viewListMessage.push(
-              <div className="viewWrapItemRight2" key={item.timestamp}>
+              <div className="viewItemRight2" key={item.timestamp}>
                 <img
                   className="imgContentItem"
                   src={this.getGifImage(item.content)}
@@ -231,27 +232,48 @@ class Main extends Component {
           if (item.type === 0) {
             viewListMessage.push(
               <div className="viewWrapItemLeft" key={item.timestamp}>
-                <span className="textContentItem">{item.content}</span>
+                <div className="viewItemLeft">
+                  <span className="textContentItem">{item.content}</span>
+                </div>
+                {this.isLastMessageLeft(index) ? (
+                  <span className="textTimeLeft">
+                    {moment(Number(item.timestamp)).format('ll')}
+                  </span>
+                ) : null}
               </div>
             )
           } else if (item.type === 1) {
             viewListMessage.push(
               <div className="viewWrapItemLeft2" key={item.timestamp}>
-                <img
-                  className="imgContentItem"
-                  src={item.content}
-                  alt="content message"
-                />
+                <div className="viewItemLeft2">
+                  <img
+                    className="imgContentItem"
+                    src={item.content}
+                    alt="content message"
+                  />
+                </div>
+                {this.isLastMessageLeft(index) ? (
+                  <span className="textTimeLeft">
+                    {moment(Number(item.timestamp)).format('ll')}
+                  </span>
+                ) : null}
               </div>
             )
           } else {
             viewListMessage.push(
               <div className="viewWrapItemLeft2" key={item.timestamp}>
-                <img
-                  className="imgContentItem"
-                  src={this.getGifImage(item.content)}
-                  alt="content message"
-                />
+                <div className="viewItemLeft2" key={item.timestamp}>
+                  <img
+                    className="imgContentItem"
+                    src={this.getGifImage(item.content)}
+                    alt="content message"
+                  />
+                </div>
+                {this.isLastMessageLeft(index) ? (
+                  <span className="textTimeLeft">
+                    {moment(Number(item.timestamp)).format('ll')}
+                  </span>
+                ) : null}
               </div>
             )
           }
@@ -268,7 +290,7 @@ class Main extends Component {
       <div className="viewWelcomeBoard">
         <span className="textTitleWelcome">{`Welcome, ${
           this.currentUserNickname
-          }`}</span>
+        }`}</span>
         <img
           className="avatarWelcome"
           src={this.currentUserAvatar}
@@ -358,7 +380,7 @@ class Main extends Component {
     return hash
   }
 
-  getGifImage = (value) => {
+  getGifImage = value => {
     switch (value) {
       case 'mimi1':
         return images.mimi1
@@ -378,6 +400,32 @@ class Main extends Component {
         return images.mimi8
       case 'mimi9':
         return images.mimi9
+      default:
+        return null
+    }
+  }
+
+  isLastMessageLeft(index) {
+    if (
+      (index + 1 < this.listMessage.length &&
+        this.listMessage[index + 1].idFrom === this.currentUserId) ||
+      index === this.listMessage.length - 1
+    ) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  isLastMessageRight(index) {
+    if (
+      (index + 1 < this.listMessage.length &&
+        this.listMessage[index + 1].idFrom !== this.currentUserId) ||
+      index === this.listMessage.length - 1
+    ) {
+      return true
+    } else {
+      return false
     }
   }
 }

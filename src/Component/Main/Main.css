@@ -350,7 +350,7 @@ input::placeholder {
 
 /* View item message */
 
-.viewWrapItemRight {
+.viewItemRight {
   width: 300px;
   height: auto;
   background-color: #e8e8e8;
@@ -366,7 +366,7 @@ input::placeholder {
   padding-bottom: 5px;
 }
 
-.viewWrapItemRight2 {
+.viewItemRight2 {
   width: 300px;
   height: auto;
   background-color: #e8e8e8;
@@ -380,30 +380,38 @@ input::placeholder {
 
 .viewWrapItemLeft {
   width: 300px;
-  height: auto;
-  background-color: #203152;
+  text-align: left;
   align-self: flex-start;
   margin-left: 20px;
   margin-top: 10px;
+}
+
+.viewWrapItemLeft2 {
+  width: 300px;
+  align-self: flex-start;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.viewItemLeft {
+  width: 300px;
+  height: auto;
+  background-color: #203152;
   border-radius: 8px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
   color: white;
-  text-align: left;
 }
 
-.viewWrapItemLeft2 {
+.viewItemLeft2 {
   width: 300px;
   height: auto;
   background-color: #203152;
-  align-self: flex-start;
-  margin-left: 20px;
-  margin-top: 10px;
   border-radius: 8px;
   color: white;
-  text-align: left;
 }
 
 /* Item text */
@@ -424,4 +432,11 @@ input::placeholder {
   width: 300px;
   height: 300px;
   border-radius: 8px;
+}
+
+.textTimeLeft {
+  color: #808888;
+  font-size: 12px;
+  font-style: italic;
+  margin-left: 10px;
 }
