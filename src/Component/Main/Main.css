@@ -103,7 +103,7 @@
   background-color: #203152;
   border: 0px;
   color: white;
-  border-radius: 3px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -123,7 +123,7 @@
   background-color: #dd4b39;
   border: 0px;
   color: white;
-  border-radius: 3px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -357,7 +357,7 @@ input::placeholder {
   align-self: flex-end;
   margin-right: 20px;
   margin-top: 10px;
-  border-radius: 8px;
+  border-radius: 4px;
   color: #203152;
   text-align: left;
   padding-left: 10px;
@@ -373,7 +373,7 @@ input::placeholder {
   align-self: flex-end;
   margin-right: 20px;
   margin-top: 10px;
-  border-radius: 8px;
+  border-radius: 4px;
   color: #203152;
   text-align: left;
 }
@@ -398,7 +398,7 @@ input::placeholder {
   width: 300px;
   height: auto;
   background-color: #203152;
-  border-radius: 8px;
+  border-radius: 4px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 5px;
@@ -410,8 +410,28 @@ input::placeholder {
   width: 300px;
   height: auto;
   background-color: #203152;
-  border-radius: 8px;
+  border-radius: 4px;
   color: white;
+}
+
+.viewWrapItemLeft3 {
+  flex-direction: row;
+  display: flex;
+  width: 340px;
+}
+
+.peerAvatarLeft {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  object-fit: cover;
+  align-self: flex-end;
+}
+
+.viewPaddingLeft {
+  width: 40px;
 }
 
 /* Item text */
@@ -431,12 +451,12 @@ input::placeholder {
   object-fit: cover;
   width: 300px;
   height: 300px;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .textTimeLeft {
   color: #808888;
   font-size: 12px;
   font-style: italic;
-  margin-left: 10px;
+  margin-left: 50px;
 }

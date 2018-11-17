@@ -94,7 +94,7 @@ class Main extends Component {
           this.props.history.push('/')
         })
       })
-      .catch(function(err) {
+      .catch(function (err) {
         this.setState({ isLoading: false })
         this.props.showToast(0, err.message)
       })
@@ -131,10 +131,10 @@ class Main extends Component {
             <div className="viewWrapContentItem">
               <span className="textItem">{`Nickname: ${
                 item.data().nickname
-              }`}</span>
+                }`}</span>
               <span className="textItem">{`About me: ${
                 item.data().abouteMe ? item.data().abouteMe : 'Not available'
-              }`}</span>
+                }`}</span>
             </div>
           </button>
         )
@@ -232,8 +232,13 @@ class Main extends Component {
           if (item.type === 0) {
             viewListMessage.push(
               <div className="viewWrapItemLeft" key={item.timestamp}>
-                <div className="viewItemLeft">
-                  <span className="textContentItem">{item.content}</span>
+                <div className="viewWrapItemLeft3">
+                  {this.isLastMessageLeft(index) ?
+                    <img src={this.currentPeerUser.photoUrl} alt='avatar' className='peerAvatarLeft' /> :
+                    <div className='viewPaddingLeft' />}
+                  <div className="viewItemLeft">
+                    <span className="textContentItem">{item.content}</span>
+                  </div>
                 </div>
                 {this.isLastMessageLeft(index) ? (
                   <span className="textTimeLeft">
@@ -245,12 +250,17 @@ class Main extends Component {
           } else if (item.type === 1) {
             viewListMessage.push(
               <div className="viewWrapItemLeft2" key={item.timestamp}>
-                <div className="viewItemLeft2">
-                  <img
-                    className="imgContentItem"
-                    src={item.content}
-                    alt="content message"
-                  />
+                <div className="viewWrapItemLeft3">
+                  {this.isLastMessageLeft(index) ?
+                    <img src={this.currentPeerUser.photoUrl} alt='avatar' className='peerAvatarLeft' /> :
+                    <div className='viewPaddingLeft' />}
+                  <div className="viewItemLeft2">
+                    <img
+                      className="imgContentItem"
+                      src={item.content}
+                      alt="content message"
+                    />
+                  </div>
                 </div>
                 {this.isLastMessageLeft(index) ? (
                   <span className="textTimeLeft">
@@ -262,12 +272,17 @@ class Main extends Component {
           } else {
             viewListMessage.push(
               <div className="viewWrapItemLeft2" key={item.timestamp}>
-                <div className="viewItemLeft2" key={item.timestamp}>
-                  <img
-                    className="imgContentItem"
-                    src={this.getGifImage(item.content)}
-                    alt="content message"
-                  />
+                <div className="viewWrapItemLeft3">
+                  {this.isLastMessageLeft(index) ?
+                    <img src={this.currentPeerUser.photoUrl} alt='avatar' className='peerAvatarLeft' /> :
+                    <div className='viewPaddingLeft' />}
+                  <div className="viewItemLeft2" key={item.timestamp}>
+                    <img
+                      className="imgContentItem"
+                      src={this.getGifImage(item.content)}
+                      alt="content message"
+                    />
+                  </div>
                 </div>
                 {this.isLastMessageLeft(index) ? (
                   <span className="textTimeLeft">
@@ -290,7 +305,7 @@ class Main extends Component {
       <div className="viewWelcomeBoard">
         <span className="textTitleWelcome">{`Welcome, ${
           this.currentUserNickname
-        }`}</span>
+          }`}</span>
         <img
           className="avatarWelcome"
           src={this.currentUserAvatar}
