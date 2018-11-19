@@ -272,6 +272,8 @@
   flex: 1;
   flex-direction: column;
   overflow-y: scroll;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 .viewListContentChat::-webkit-scrollbar-track {
@@ -384,6 +386,7 @@ input::placeholder {
   align-self: flex-start;
   margin-left: 20px;
   margin-top: 10px;
+  margin-bottom: -15px;
 }
 
 .viewWrapItemLeft2 {
@@ -392,6 +395,14 @@ input::placeholder {
   text-align: left;
   margin-left: 20px;
   margin-top: 10px;
+  margin-bottom: -15px;
+}
+
+.viewWrapItemLeft3 {
+  flex-direction: row;
+  display: flex;
+  width: 340px;
+  margin-bottom: -15px;
 }
 
 .viewItemLeft {
@@ -412,12 +423,6 @@ input::placeholder {
   background-color: #203152;
   border-radius: 4px;
   color: white;
-}
-
-.viewWrapItemLeft3 {
-  flex-direction: row;
-  display: flex;
-  width: 340px;
 }
 
 .peerAvatarLeft {

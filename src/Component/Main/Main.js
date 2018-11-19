@@ -28,6 +28,10 @@ class Main extends Component {
     this.checkLogin()
   }
 
+  componentDidUpdate() {
+    this.scrollToBottom()
+  }
+
   checkLogin = () => {
     if (!localStorage.getItem('id')) {
       this.setState({ isLoading: false }, () => {
@@ -94,7 +98,7 @@ class Main extends Component {
           this.props.history.push('/')
         })
       })
-      .catch(function (err) {
+      .catch(function(err) {
         this.setState({ isLoading: false })
         this.props.showToast(0, err.message)
       })
@@ -108,6 +112,14 @@ class Main extends Component {
 
   onProfileClick = () => {
     this.props.history.push('/profile')
+  }
+
+  onSendMessage = () => {}
+
+  scrollToBottom = () => {
+    if (this.messagesEnd) {
+      this.messagesEnd.scrollIntoView({})
+    }
   }
 
   renderListUser = () => {
@@ -131,10 +143,10 @@ class Main extends Component {
             <div className="viewWrapContentItem">
               <span className="textItem">{`Nickname: ${
                 item.data().nickname
-                }`}</span>
+              }`}</span>
               <span className="textItem">{`About me: ${
                 item.data().abouteMe ? item.data().abouteMe : 'Not available'
-                }`}</span>
+              }`}</span>
             </div>
           </button>
         )
@@ -161,7 +173,15 @@ class Main extends Component {
         </div>
 
         {/* List message */}
-        <div className="viewListContentChat">{this.renderListMessage()}</div>
+        <div className="viewListContentChat">
+          {this.renderListMessage()}
+          <div
+            style={{ float: 'left', clear: 'both' }}
+            ref={el => {
+              this.messagesEnd = el
+            }}
+          />
+        </div>
 
         {/* View bottom */}
         <div className="viewBottom">
@@ -233,9 +253,15 @@ class Main extends Component {
             viewListMessage.push(
               <div className="viewWrapItemLeft" key={item.timestamp}>
                 <div className="viewWrapItemLeft3">
-                  {this.isLastMessageLeft(index) ?
-                    <img src={this.currentPeerUser.photoUrl} alt='avatar' className='peerAvatarLeft' /> :
-                    <div className='viewPaddingLeft' />}
+                  {this.isLastMessageLeft(index) ? (
+                    <img
+                      src={this.currentPeerUser.photoUrl}
+                      alt="avatar"
+                      className="peerAvatarLeft"
+                    />
+                  ) : (
+                    <div className="viewPaddingLeft" />
+                  )}
                   <div className="viewItemLeft">
                     <span className="textContentItem">{item.content}</span>
                   </div>
@@ -251,9 +277,15 @@ class Main extends Component {
             viewListMessage.push(
               <div className="viewWrapItemLeft2" key={item.timestamp}>
                 <div className="viewWrapItemLeft3">
-                  {this.isLastMessageLeft(index) ?
-                    <img src={this.currentPeerUser.photoUrl} alt='avatar' className='peerAvatarLeft' /> :
-                    <div className='viewPaddingLeft' />}
+                  {this.isLastMessageLeft(index) ? (
+                    <img
+                      src={this.currentPeerUser.photoUrl}
+                      alt="avatar"
+                      className="peerAvatarLeft"
+                    />
+                  ) : (
+                    <div className="viewPaddingLeft" />
+                  )}
                   <div className="viewItemLeft2">
                     <img
                       className="imgContentItem"
@@ -273,9 +305,15 @@ class Main extends Component {
             viewListMessage.push(
               <div className="viewWrapItemLeft2" key={item.timestamp}>
                 <div className="viewWrapItemLeft3">
-                  {this.isLastMessageLeft(index) ?
-                    <img src={this.currentPeerUser.photoUrl} alt='avatar' className='peerAvatarLeft' /> :
-                    <div className='viewPaddingLeft' />}
+                  {this.isLastMessageLeft(index) ? (
+                    <img
+                      src={this.currentPeerUser.photoUrl}
+                      alt="avatar"
+                      className="peerAvatarLeft"
+                    />
+                  ) : (
+                    <div className="viewPaddingLeft" />
+                  )}
                   <div className="viewItemLeft2" key={item.timestamp}>
                     <img
                       className="imgContentItem"
@@ -305,7 +343,7 @@ class Main extends Component {
       <div className="viewWelcomeBoard">
         <span className="textTitleWelcome">{`Welcome, ${
           this.currentUserNickname
-          }`}</span>
+        }`}</span>
         <img
           className="avatarWelcome"
           src={this.currentUserAvatar}
