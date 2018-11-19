@@ -13,7 +13,8 @@ class Main extends Component {
     this.state = {
       isLoading: true,
       isLoadHistory: false,
-      isOpenDialogConfirmLogout: false
+      isOpenDialogConfirmLogout: false,
+      inputValue: '',
     }
     this.currentUserId = localStorage.getItem('id')
     this.currentUserAvatar = localStorage.getItem('photoUrl')
@@ -66,7 +67,6 @@ class Main extends Component {
       .collection('messages')
       .doc(this.groupChatId)
       .collection(this.groupChatId)
-      .orderBy('timestamp', 'desc')
       .limit(40)
       .get()
       .then(snapshot => {
@@ -74,10 +74,25 @@ class Main extends Component {
           this.listMessage.push(doc.data())
         })
         this.setState({ isLoadHistory: false })
+        this.listeningDatabaseChange()
       })
       .catch(err => {
-        console.log('Error getting documents', err)
+        this.props.showToast(0, err.toString())
       })
+  }
+
+  listeningDatabaseChange = () => {
+    myFirestore
+      .collection('messages')
+      .doc(this.groupChatId)
+      .collection(this.groupChatId)
+      .onSnapshot((snapshot) => {
+        snapshot.docChanges().forEach((change) => {
+          if (change.type === "added") {
+            console.log('aaaaaaaa', change)
+          }
+        });
+      });
   }
 
   onLogoutClick = () => {
@@ -98,7 +113,7 @@ class Main extends Component {
           this.props.history.push('/')
         })
       })
-      .catch(function(err) {
+      .catch(function (err) {
         this.setState({ isLoading: false })
         this.props.showToast(0, err.message)
       })
@@ -114,8 +129,36 @@ class Main extends Component {
     this.props.history.push('/profile')
   }
 
-  onSendMessage = () => {}
+  onSendMessage = (content, type) => {
+    if (this.state.inputValue.trim() === '') {
+      return
+    }
 
+    const timestamp = moment().valueOf().toString()
+
+    const itemMessage = {
+      'idFrom': this.currentUserId,
+      'idTo': this.currentPeerUser.id,
+      'timestamp': timestamp,
+      'content': content.trim(),
+      'type': type
+    }
+
+    myFirestore.collection('messages')
+      .doc(this.groupChatId)
+      .collection(this.groupChatId)
+      .doc(timestamp)
+      .set(itemMessage)
+      .then(() => {
+        this.setState({ inputValue: '' })
+        this.listMessage.push(itemMessage)
+        this.setState({})
+      })
+      .catch((err) => {
+        this.props.showToast(0, err.toString())
+      });
+
+  }
   scrollToBottom = () => {
     if (this.messagesEnd) {
       this.messagesEnd.scrollIntoView({})
@@ -143,10 +186,10 @@ class Main extends Component {
             <div className="viewWrapContentItem">
               <span className="textItem">{`Nickname: ${
                 item.data().nickname
-              }`}</span>
+                }`}</span>
               <span className="textItem">{`About me: ${
                 item.data().abouteMe ? item.data().abouteMe : 'Not available'
-              }`}</span>
+                }`}</span>
             </div>
           </button>
         )
@@ -195,8 +238,17 @@ class Main extends Component {
             src={images.ic_sticker}
             alt="icon open sticker"
           />
-          <input className="viewInput" placeholder="Type your message..." />
-          <img className="icSend" src={images.ic_send} alt="icon send" />
+          <input
+            className="viewInput"
+            placeholder="Type your message..."
+            value={this.state.inputValue}
+            onChange={(event) => {
+              this.setState({ inputValue: event.target.value })
+            }}
+          />
+          <img className="icSend" src={images.ic_send} alt="icon send"
+            onClick={() => this.onSendMessage(this.state.inputValue, 0)}
+          />
         </div>
 
         {/* Loading */}
@@ -260,8 +312,8 @@ class Main extends Component {
                       className="peerAvatarLeft"
                     />
                   ) : (
-                    <div className="viewPaddingLeft" />
-                  )}
+                      <div className="viewPaddingLeft" />
+                    )}
                   <div className="viewItemLeft">
                     <span className="textContentItem">{item.content}</span>
                   </div>
@@ -284,8 +336,8 @@ class Main extends Component {
                       className="peerAvatarLeft"
                     />
                   ) : (
-                    <div className="viewPaddingLeft" />
-                  )}
+                      <div className="viewPaddingLeft" />
+                    )}
                   <div className="viewItemLeft2">
                     <img
                       className="imgContentItem"
@@ -312,8 +364,8 @@ class Main extends Component {
                       className="peerAvatarLeft"
                     />
                   ) : (
-                    <div className="viewPaddingLeft" />
-                  )}
+                      <div className="viewPaddingLeft" />
+                    )}
                   <div className="viewItemLeft2" key={item.timestamp}>
                     <img
                       className="imgContentItem"
@@ -343,7 +395,7 @@ class Main extends Component {
       <div className="viewWelcomeBoard">
         <span className="textTitleWelcome">{`Welcome, ${
           this.currentUserNickname
-        }`}</span>
+          }`}</span>
         <img
           className="avatarWelcome"
           src={this.currentUserAvatar}

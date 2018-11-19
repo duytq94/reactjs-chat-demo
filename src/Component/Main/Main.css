@@ -297,7 +297,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 50px;
+  height: 60px;
   background-color: #e8e8e8;
 }
 
@@ -335,11 +335,11 @@
 
 .viewInput {
   flex: 1;
-  border-radius: 20px;
+  border-radius: 4px;
   padding-left: 10px;
   padding-right: 10px;
-  border: 1px solid #203152;
-  height: 30px;
+  border: 0.5px solid #203152;
+  height: 40px;
 }
 
 .viewInput:focus {
