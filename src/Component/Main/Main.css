@@ -59,7 +59,6 @@
 }
 
 /* Dialog confirm */
-
 .viewCoverScreen {
   position: absolute;
   top: 0;
@@ -136,7 +135,6 @@
 }
 
 /* List user */
-
 .viewListUser {
   overflow-y: scroll;
   max-height: 90vh;
@@ -146,7 +144,7 @@
 
 .viewListUser::-webkit-scrollbar-track {
   padding: 2px 0;
-  background-color: #20315276;
+  background-color: #e8e8e8;
 }
 
 .viewListUser::-webkit-scrollbar {
@@ -215,7 +213,6 @@
 }
 
 /* Welcome board */
-
 .viewWelcomeBoard {
   display: flex;
   flex: 1;
@@ -246,7 +243,6 @@
 }
 
 /* Chat board */
-
 .viewChatBoard {
   display: flex;
   flex: 1;
@@ -256,7 +252,7 @@
 }
 
 .headerChatBoard {
-  background-color: #e6e6e6;
+  border-bottom: 1px solid #e8e8e8;
   padding: 5px;
 }
 
@@ -294,8 +290,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 60px;
-  background-color: #e8e8e8;
+  height: 50px;
+  border-top: 1px solid #e8e8e8;
 }
 
 .icOpenGallery {
@@ -335,8 +331,8 @@
   border-radius: 4px;
   padding-left: 10px;
   padding-right: 10px;
-  border: 0.5px solid #203152;
-  height: 40px;
+  border: 0px;
+  height: 30px;
 }
 
 .viewInput:focus {
@@ -348,7 +344,6 @@ input::placeholder {
 }
 
 /* View item message */
-
 .viewItemRight {
   width: 300px;
   height: auto;
@@ -437,7 +432,6 @@ input::placeholder {
 }
 
 /* Item text */
-
 .textContentItem {
   font-size: 14px;
   word-break: break-all;
@@ -448,7 +442,6 @@ input::placeholder {
 }
 
 /* Item image */
-
 .imgContentItem {
   object-fit: cover;
   width: 300px;
@@ -461,4 +454,23 @@ input::placeholder {
   font-size: 12px;
   font-style: italic;
   margin-left: 50px;
+}
+
+/* Stickers */
+.viewStickers {
+  display: flex;
+  border-top: 1px solid #e8e8e8;
+  height: 100px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.imgSticker {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.imgSticker:active {
+  opacity: 0.5;
 }

@@ -14,7 +14,8 @@ class Main extends Component {
       isLoading: true,
       isLoadHistory: false,
       isOpenDialogConfirmLogout: false,
-      inputValue: ''
+      inputValue: '',
+      isShowSticker: false
     }
     this.currentUserId = localStorage.getItem('id')
     this.currentUserAvatar = localStorage.getItem('photoUrl')
@@ -117,8 +118,16 @@ class Main extends Component {
     this.props.history.push('/profile')
   }
 
+  openListSticker = () => {
+    this.setState({ isShowSticker: !this.state.isShowSticker })
+  }
+
   onSendMessage = (content, type) => {
-    if (this.state.inputValue.trim() === '') {
+    if (this.state.isShowSticker && type === 2) {
+      this.setState({ isShowSticker: false })
+    }
+
+    if (content.trim() === '') {
       return
     }
 
@@ -147,6 +156,7 @@ class Main extends Component {
         this.props.showToast(0, err.toString())
       })
   }
+
   scrollToBottom = () => {
     if (this.messagesEnd) {
       this.messagesEnd.scrollIntoView({})
@@ -214,6 +224,9 @@ class Main extends Component {
           />
         </div>
 
+        {/* Stickers */}
+        {this.state.isShowSticker ? this.renderStickers() : null}
+
         {/* View bottom */}
         <div className="viewBottom">
           <img
@@ -225,6 +238,7 @@ class Main extends Component {
             className="icOpenSticker"
             src={images.ic_sticker}
             alt="icon open sticker"
+            onClick={this.openListSticker}
           />
           <input
             className="viewInput"
@@ -395,6 +409,67 @@ class Main extends Component {
         <span className="textDesciptionWelcome">
           Let's start talking. Great things might happen.
         </span>
+      </div>
+    )
+  }
+
+  renderStickers = () => {
+    return (
+      <div className="viewStickers">
+        <img
+          className="imgSticker"
+          src={images.mimi1}
+          alt="sticker"
+          onClick={() => this.onSendMessage('mimi1', 2)}
+        />
+        <img
+          className="imgSticker"
+          src={images.mimi2}
+          alt="sticker"
+          onClick={() => this.onSendMessage('mimi2', 2)}
+        />
+        <img
+          className="imgSticker"
+          src={images.mimi3}
+          alt="sticker"
+          onClick={() => this.onSendMessage('mimi3', 2)}
+        />
+        <img
+          className="imgSticker"
+          src={images.mimi4}
+          alt="sticker"
+          onClick={() => this.onSendMessage('mimi4', 2)}
+        />
+        <img
+          className="imgSticker"
+          src={images.mimi5}
+          alt="sticker"
+          onClick={() => this.onSendMessage('mimi5', 2)}
+        />
+        <img
+          className="imgSticker"
+          src={images.mimi6}
+          alt="sticker"
+          onClick={() => this.onSendMessage('mimi6', 2)}
+        />
+        <img
+          className="imgSticker"
+          src={images.mimi7}
+          alt="sticker"
+          onClick={() => this.onSendMessage('mimi7', 2)}
+        />
+        <img
+          className="imgSticker"
+          src={images.mimi8}
+          alt="sticker"
+          onClick={() => this.onSendMessage('mimi8', 2)}
+        />
+        <img
+          className="imgSticker"
+          src={images.mimi9}
+          alt="sticker"
+          onClick={() => this.onSendMessage('mimi9', 2)}
+        />
       </div>
     )
   }
