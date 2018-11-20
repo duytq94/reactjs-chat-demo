@@ -1,0 +1,29 @@
+/* Welcome board */
+.viewWelcomeBoard {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.textTitleWelcome {
+  font-size: 22px;
+  font-weight: bold;
+  color: #203152;
+}
+
+.textDesciptionWelcome {
+  font-size: 20px;
+  color: #203152;
+  margin-bottom: 200px;
+}
+
+.avatarWelcome {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
