@@ -145,9 +145,8 @@
 }
 
 .viewListUser::-webkit-scrollbar-track {
-  border: 1px solid #e8e8e8;
   padding: 2px 0;
-  background-color: #e8e8e8;
+  background-color: #20315276;
 }
 
 .viewListUser::-webkit-scrollbar {
@@ -157,7 +156,7 @@
 .viewListUser::-webkit-scrollbar-thumb {
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #737272;
+  background-color: #203152;
 }
 
 .viewWrapItem {
@@ -257,7 +256,7 @@
 }
 
 .headerChatBoard {
-  background-color: #e8e8e8;
+  background-color: #e6e6e6;
   padding: 5px;
 }
 
@@ -277,9 +276,7 @@
 }
 
 .viewListContentChat::-webkit-scrollbar-track {
-  border: 1px solid #e8e8e8;
   padding: 2px 0;
-  background-color: #e8e8e8;
 }
 
 .viewListContentChat::-webkit-scrollbar {
@@ -289,7 +286,7 @@
 .viewListContentChat::-webkit-scrollbar-thumb {
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #737272;
+  background-color: #e8e8e8;
 }
 
 .viewBottom {
