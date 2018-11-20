@@ -81,29 +81,36 @@ class Main extends Component {
     if (this.listUser.length > 0) {
       let viewListUser = []
       this.listUser.forEach((item, index) => {
-        viewListUser.push(
-          <button
-            className="viewWrapItem"
-            key={item.data().id}
-            onClick={() => {
-              this.setState({ currentPeerUser: item.data() })
-            }}
-          >
-            <img
-              className="viewAvatarItem"
-              src={item.data().photoUrl}
-              alt="icon avatar"
-            />
-            <div className="viewWrapContentItem">
-              <span className="textItem">{`Nickname: ${
-                item.data().nickname
-              }`}</span>
-              <span className="textItem">{`About me: ${
-                item.data().abouteMe ? item.data().abouteMe : 'Not available'
-              }`}</span>
-            </div>
-          </button>
-        )
+        if (item.data().id !== this.currentUserId) {
+          viewListUser.push(
+            <button
+              className={
+                this.state.currentPeerUser &&
+                this.state.currentPeerUser.id === item.data().id
+                  ? 'viewWrapItemFocused'
+                  : 'viewWrapItem'
+              }
+              key={item.data().id}
+              onClick={() => {
+                this.setState({ currentPeerUser: item.data() })
+              }}
+            >
+              <img
+                className="viewAvatarItem"
+                src={item.data().photoUrl}
+                alt="icon avatar"
+              />
+              <div className="viewWrapContentItem">
+                <span className="textItem">{`Nickname: ${
+                  item.data().nickname
+                }`}</span>
+                <span className="textItem">{`About me: ${
+                  item.data().abouteMe ? item.data().abouteMe : 'Not available'
+                }`}</span>
+              </div>
+            </button>
+          )
+        }
       })
       return viewListUser
     } else {

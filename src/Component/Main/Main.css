@@ -161,12 +161,8 @@
   border: none;
   display: flex;
   flex-direction: 'row';
-  background-color: #e8e8e8;
-  width: 300px;
-  border-radius: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 10px;
+  background-color: #ffffff;
+  width: 320px;
   padding: 10px;
   align-items: center;
   justify-content: center;
@@ -180,10 +176,29 @@
   outline: 0;
 }
 
+.viewWrapItemFocused {
+  border: none;
+  display: flex;
+  flex-direction: 'row';
+  background-color: #e8e8e8;
+  width: 320px;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewWrapItemFocused:active {
+  opacity: 0.5;
+}
+
+.viewWrapItemFocused:focus {
+  outline: 0;
+}
+
 .viewAvatarItem {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
   object-fit: cover;
 }
 
@@ -201,7 +216,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 220px;
+  width: 240px;
   text-align: left;
   font-size: 14px;
 }
