@@ -156,17 +156,26 @@ export default class ChatBoard extends Component {
 
         {/* View bottom */}
         <div className="viewBottom">
-          <img
-            className="icOpenGallery"
-            src={images.ic_photo}
-            alt="icon open gallery"
-          />
+          <div className="viewWrapOpenGallery">
+            <img
+              className="icOpenGallery"
+              src={images.ic_photo}
+              alt="icon open gallery"
+            />
+            <input
+              className="viewInputGallery"
+              type="file"
+              onChange={this.onChangeAvatar}
+            />
+          </div>
+
           <img
             className="icOpenSticker"
             src={images.ic_sticker}
             alt="icon open sticker"
             onClick={this.openListSticker}
           />
+
           <input
             className="viewInput"
             placeholder="Type your message..."
