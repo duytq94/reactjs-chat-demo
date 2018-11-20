@@ -214,7 +214,7 @@ export default class ChatBoard extends Component {
             viewListMessage.push(
               <div className="viewItemRight2" key={item.timestamp}>
                 <img
-                  className="imgContentItem"
+                  className="imgItemRight"
                   src={item.content}
                   alt="content message"
                 />
@@ -224,7 +224,7 @@ export default class ChatBoard extends Component {
             viewListMessage.push(
               <div className="viewItemRight3" key={item.timestamp}>
                 <img
-                  className="imgContentItem"
+                  className="imgItemRight"
                   src={this.getGifImage(item.content)}
                   alt="content message"
                 />
@@ -272,7 +272,7 @@ export default class ChatBoard extends Component {
                   )}
                   <div className="viewItemLeft2">
                     <img
-                      className="imgContentItem"
+                      className="imgItemLeft"
                       src={item.content}
                       alt="content message"
                     />
@@ -300,7 +300,7 @@ export default class ChatBoard extends Component {
                   )}
                   <div className="viewItemLeft3" key={item.timestamp}>
                     <img
-                      className="imgContentItem"
+                      className="imgItemLeft"
                       src={this.getGifImage(item.content)}
                       alt="content message"
                     />

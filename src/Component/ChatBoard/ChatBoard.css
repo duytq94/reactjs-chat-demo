@@ -107,7 +107,10 @@ input::placeholder {
   align-self: flex-end;
   margin-right: 20px;
   margin-top: 10px;
-  border-radius: 4px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 0px;
   color: #203152;
   text-align: left;
   padding-left: 10px;
@@ -123,7 +126,10 @@ input::placeholder {
   align-self: flex-end;
   margin-right: 20px;
   margin-top: 10px;
-  border-radius: 4px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 0px;
   color: #203152;
   text-align: left;
 }
@@ -134,7 +140,10 @@ input::placeholder {
   align-self: flex-end;
   margin-right: 20px;
   margin-top: 10px;
-  border-radius: 4px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 0px;
   text-align: left;
 }
 
@@ -167,7 +176,10 @@ input::placeholder {
   width: 300px;
   height: auto;
   background-color: #203152;
-  border-radius: 4px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 8px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 5px;
@@ -179,14 +191,20 @@ input::placeholder {
   width: 300px;
   height: auto;
   background-color: #203152;
-  border-radius: 4px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 8px;
   color: white;
 }
 
 .viewItemLeft3 {
   width: 300px;
   height: auto;
-  border-radius: 4px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 8px;
   color: white;
 }
 
@@ -215,11 +233,24 @@ input::placeholder {
 }
 
 /* Item image */
-.imgContentItem {
+.imgItemRight {
   object-fit: cover;
   width: 300px;
   height: 300px;
-  border-radius: 4px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 0px;
+}
+
+.imgItemLeft {
+  object-fit: cover;
+  width: 300px;
+  height: 300px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 8px;
 }
 
 .textTimeLeft {
