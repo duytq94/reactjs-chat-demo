@@ -53,32 +53,19 @@
 .icOpenGallery {
   width: 30px;
   height: 30px;
+  margin-left: 10px;
 }
 
 .icOpenGallery:active {
   opacity: 0.5;
 }
 
-.viewWrapOpenGallery {
-  margin-left: 10px;
-}
-
 .viewInputGallery {
-  display: flex;
+  opacity: 0;
   position: absolute;
-  padding: 0px;
-  /* opacity: 0; */
+  z-index: -1;
+  left: 10px;
   width: 30px;
-  height: 30px;
-  margin-bottom: -20px;
-  background: red;
-}
-.viewInputGallery input[type='file'] {
-  filter: alpha(opacity=0);
-  outline: none;
-  background: red;
-  cursor: inherit;
-  display: block;
 }
 
 .icOpenSticker {

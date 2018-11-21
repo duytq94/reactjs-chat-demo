@@ -110,8 +110,12 @@ class Profile extends Component {
             className="imgInputFile"
             alt="icon gallery"
             src={images.ic_input_file}
+            onClick={() => this.refInput.click()}
           />
           <input
+            ref={el => {
+              this.refInput = el
+            }}
             className="viewInputFile"
             type="file"
             onChange={this.onChangeAvatar}

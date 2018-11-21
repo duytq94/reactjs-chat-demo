@@ -86,23 +86,23 @@ input::placeholder {
   height: 40px;
   border-radius: 20px;
 }
+
 .viewInputFile {
-  border-radius: 50px;
-  padding: 0px;
-  opacity: 0;
-  cursor: pointer;
-}
-.viewInputFile input[type='file'] {
-  filter: alpha(opacity=0);
-  outline: none;
-  background: white;
-  cursor: inherit;
-  display: block;
-}
-.imgInputFile {
   position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 0px;
+  outline: 0;
+  z-index: -1;
+  opacity: 0;
+}
+
+.imgInputFile {
   border: none;
   width: 40px;
   height: 40px;
   padding: 5px;
+}
+.imgInputFile:active {
+  opacity: 0.5;
 }
