@@ -6,6 +6,7 @@ import images from '../Themes/Images'
 import WelcomeBoard from '../WelcomeBoard/WelcomeBoard'
 import './Main.css'
 import ChatBoard from './../ChatBoard/ChatBoard'
+import { AppString } from './../Const'
 
 class Main extends Component {
   constructor(props) {
@@ -15,9 +16,9 @@ class Main extends Component {
       isOpenDialogConfirmLogout: false,
       currentPeerUser: null
     }
-    this.currentUserId = localStorage.getItem('id')
-    this.currentUserAvatar = localStorage.getItem('photoUrl')
-    this.currentUserNickname = localStorage.getItem('nickname')
+    this.currentUserId = localStorage.getItem(AppString.ID)
+    this.currentUserAvatar = localStorage.getItem(AppString.PHOTO_URL)
+    this.currentUserNickname = localStorage.getItem(AppString.NICKNAME)
     this.listUser = []
   }
 
@@ -26,7 +27,7 @@ class Main extends Component {
   }
 
   checkLogin = () => {
-    if (!localStorage.getItem('id')) {
+    if (!localStorage.getItem(AppString.ID)) {
       this.setState({ isLoading: false }, () => {
         this.props.history.push('/')
       })
@@ -36,7 +37,7 @@ class Main extends Component {
   }
 
   getListUser = async () => {
-    const result = await myFirestore.collection('users').get()
+    const result = await myFirestore.collection(AppString.NODE_USERS).get()
     if (result.docs.length > 0) {
       this.listUser = [...result.docs]
       this.setState({ isLoading: false })

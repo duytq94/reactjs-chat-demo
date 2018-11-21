@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
 import { myFirebase, myFirestore } from '../../Config/MyFirebase'
 import './Login.css'
+import { AppString } from './../Const'
 
 class Login extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class Login extends Component {
   }
 
   checkLogin = () => {
-    if (localStorage.getItem('id')) {
+    if (localStorage.getItem(AppString.ID)) {
       this.setState({ isLoading: false }, () => {
         this.setState({ isLoading: false })
         this.props.showToast(1, 'Login success')
@@ -40,8 +41,8 @@ class Login extends Component {
         let user = result.user
         if (user) {
           const result = await myFirestore
-            .collection('users')
-            .where('id', '==', user.uid)
+            .collection(AppString.NODE_USERS)
+            .where(AppString.ID, '==', user.uid)
             .get()
 
           if (result.docs.length === 0) {
@@ -57,9 +58,9 @@ class Login extends Component {
               })
               .then(data => {
                 // Write user info to local
-                localStorage.setItem('id', user.uid)
-                localStorage.setItem('nickname', user.displayName)
-                localStorage.setItem('photoUrl', user.photoURL)
+                localStorage.setItem(AppString.ID, user.uid)
+                localStorage.setItem(AppString.NICKNAME, user.displayName)
+                localStorage.setItem(AppString.PHOTO_URL, user.photoURL)
                 this.setState({ isLoading: false }, () => {
                   this.props.showToast(1, 'Login success')
                   this.props.history.push('/main')
@@ -67,10 +68,19 @@ class Login extends Component {
               })
           } else {
             // Write user info to local
-            localStorage.setItem('id', result.docs[0].data().id)
-            localStorage.setItem('nickname', result.docs[0].data().nickname)
-            localStorage.setItem('photoUrl', result.docs[0].data().photoUrl)
-            localStorage.setItem('aboutMe', result.docs[0].data().aboutMe)
+            localStorage.setItem(AppString.ID, result.docs[0].data().id)
+            localStorage.setItem(
+              AppString.NICKNAME,
+              result.docs[0].data().nickname
+            )
+            localStorage.setItem(
+              AppString.PHOTO_URL,
+              result.docs[0].data().photoUrl
+            )
+            localStorage.setItem(
+              AppString.ABOUT_ME,
+              result.docs[0].data().aboutMe
+            )
             this.setState({ isLoading: false }, () => {
               this.props.showToast(1, 'Login success')
               this.props.history.push('/main')

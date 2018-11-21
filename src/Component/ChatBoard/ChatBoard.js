@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { myFirestore, myFireStorage } from '../../Config/MyFirebase'
 import images from '../Themes/Images'
 import './ChatBoard.css'
+import { AppString } from './../Const'
 
 export default class ChatBoard extends Component {
   constructor(props) {
@@ -14,9 +15,9 @@ export default class ChatBoard extends Component {
       isShowSticker: false,
       inputValue: ''
     }
-    this.currentUserId = localStorage.getItem('id')
-    this.currentUserAvatar = localStorage.getItem('photoUrl')
-    this.currentUserNickname = localStorage.getItem('nickname')
+    this.currentUserId = localStorage.getItem(AppString.ID)
+    this.currentUserAvatar = localStorage.getItem(AppString.PHOTO_URL)
+    this.currentUserNickname = localStorage.getItem(AppString.NICKNAME)
     this.listMessage = []
     this.currentPeerUser = this.props.currentPeerUser
     this.groupChatId = null
@@ -63,13 +64,13 @@ export default class ChatBoard extends Component {
 
     // Get history and listen new data added
     this.removeListener = myFirestore
-      .collection('messages')
+      .collection(AppString.NODE_MESSAGES)
       .doc(this.groupChatId)
       .collection(this.groupChatId)
       .onSnapshot(
         snapshot => {
           snapshot.docChanges().forEach(change => {
-            if (change.type === 'added') {
+            if (change.type === AppString.DOC_ADDED) {
               this.listMessage.push(change.doc.data())
             }
           })
@@ -107,7 +108,7 @@ export default class ChatBoard extends Component {
     }
 
     myFirestore
-      .collection('messages')
+      .collection(AppString.NODE_MESSAGES)
       .doc(this.groupChatId)
       .collection(this.groupChatId)
       .doc(timestamp)
@@ -125,7 +126,7 @@ export default class ChatBoard extends Component {
       this.currentPhotoFile = event.target.files[0]
       // Check this file is an image?
       const prefixFiletype = event.target.files[0].type.toString()
-      if (prefixFiletype.indexOf('image/') === 0) {
+      if (prefixFiletype.indexOf(AppString.PREFIX_IMAGE) === 0) {
         this.uploadPhoto()
       } else {
         this.props.showToast(0, 'This file is not an image')
@@ -147,7 +148,7 @@ export default class ChatBoard extends Component {
         .put(this.currentPhotoFile)
 
       uploadTask.on(
-        'state_changed',
+        AppString.UPLOAD_CHANGED,
         null,
         err => {
           this.props.showToast(0, err.message)
@@ -160,6 +161,12 @@ export default class ChatBoard extends Component {
       )
     } else {
       this.props.showToast(0, 'File is null')
+    }
+  }
+
+  onKeyboardPress = event => {
+    if (event.key === 'Enter') {
+      this.onSendMessage(this.state.inputValue, 0)
     }
   }
 
@@ -230,6 +237,7 @@ export default class ChatBoard extends Component {
             onChange={event => {
               this.setState({ inputValue: event.target.value })
             }}
+            onKeyPress={this.onKeyboardPress}
           />
           <img
             className="icSend"

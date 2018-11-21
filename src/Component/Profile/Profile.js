@@ -5,16 +5,17 @@ import 'react-toastify/dist/ReactToastify.css'
 import { myFireStorage, myFirestore } from '../../Config/MyFirebase'
 import images from './../Themes/Images'
 import './Profile.css'
+import { AppString } from './../Const'
 
 class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
       isLoading: false,
-      id: localStorage.getItem('id'),
-      nickname: localStorage.getItem('nickname'),
-      aboutMe: localStorage.getItem('aboutMe'),
-      photoUrl: localStorage.getItem('photoUrl')
+      id: localStorage.getItem(AppString.ID),
+      nickname: localStorage.getItem(AppString.NICKNAME),
+      aboutMe: localStorage.getItem(AppString.ABOUT_ME),
+      photoUrl: localStorage.getItem(AppString.PHOTO_URL)
     }
     this.newAvatar = null
     this.newPhotoUrl = ''
@@ -25,7 +26,7 @@ class Profile extends Component {
   }
 
   checkLogin = () => {
-    if (!localStorage.getItem('id')) {
+    if (!localStorage.getItem(AppString.ID)) {
       this.props.history.push('/')
     }
   }
@@ -42,7 +43,7 @@ class Profile extends Component {
     if (event.target.files && event.target.files[0]) {
       // Check this file is an image?
       const prefixFiletype = event.target.files[0].type.toString()
-      if (prefixFiletype.indexOf('image/') !== 0) {
+      if (prefixFiletype.indexOf(AppString.PREFIX_IMAGE) !== 0) {
         this.props.showToast(0, 'This file is not an image')
         return
       }
@@ -61,7 +62,7 @@ class Profile extends Component {
         .child(this.state.id)
         .put(this.newAvatar)
       uploadTask.on(
-        'state_changed',
+        AppString.UPLOAD_CHANGED,
         null,
         err => {
           this.props.showToast(0, err.message)
@@ -92,14 +93,14 @@ class Profile extends Component {
       }
     }
     myFirestore
-      .collection('users')
+      .collection(AppString.NODE_USERS)
       .doc(this.state.id)
       .update(newInfo)
       .then(data => {
-        localStorage.setItem('nickname', this.state.nickname)
-        localStorage.setItem('aboutMe', this.state.aboutMe)
+        localStorage.setItem(AppString.NICKNAME, this.state.nickname)
+        localStorage.setItem(AppString.ABOUT_ME, this.state.aboutMe)
         if (isUpdatePhotoUrl) {
-          localStorage.setItem('photoUrl', this.newPhotoUrl)
+          localStorage.setItem(AppString.PHOTO_URL, this.newPhotoUrl)
         }
         this.setState({ isLoading: false })
         this.props.showToast(1, 'Update info success')
