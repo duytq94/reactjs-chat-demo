@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactLoading from 'react-loading'
 import { withRouter } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
-import { myFireStorage, myFirestore } from '../../Config/MyFirebase'
+import { myStorage, myFirestore } from '../../Config/MyFirebase'
 import images from './../Themes/Images'
 import './Profile.css'
 import { AppString } from './../Const'
@@ -57,7 +57,7 @@ class Profile extends Component {
   uploadAvatar = () => {
     this.setState({ isLoading: true })
     if (this.newAvatar) {
-      const uploadTask = myFireStorage
+      const uploadTask = myStorage
         .ref()
         .child(this.state.id)
         .put(this.newAvatar)

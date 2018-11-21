@@ -15,4 +15,4 @@ firebase.firestore().settings({
 
 export const myFirebase = firebase
 export const myFirestore = firebase.firestore()
-export const myFireStorage = firebase.storage()
+export const myStorage = firebase.storage()

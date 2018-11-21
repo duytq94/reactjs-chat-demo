@@ -2,7 +2,7 @@ import moment from 'moment'
 import React, { Component } from 'react'
 import ReactLoading from 'react-loading'
 import 'react-toastify/dist/ReactToastify.css'
-import { myFirestore, myFireStorage } from '../../Config/MyFirebase'
+import { myFirestore, myStorage } from '../../Config/MyFirebase'
 import images from '../Themes/Images'
 import './ChatBoard.css'
 import { AppString } from './../Const'
@@ -144,7 +144,7 @@ export default class ChatBoard extends Component {
         .valueOf()
         .toString()
 
-      const uploadTask = myFireStorage
+      const uploadTask = myStorage
         .ref()
         .child(timestamp)
         .put(this.currentPhotoFile)
