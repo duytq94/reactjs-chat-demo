@@ -100,7 +100,7 @@ class Profile extends Component {
         localStorage.setItem(AppString.NICKNAME, this.state.nickname)
         localStorage.setItem(AppString.ABOUT_ME, this.state.aboutMe)
         if (isUpdatePhotoUrl) {
-          localStorage.setItem(AppString.PHOTO_URL, this.newPhotoUrl)
+          localStorage.setItem(AppString.PHOTO_URL, downloadURL)
         }
         this.setState({ isLoading: false })
         this.props.showToast(1, 'Update info success')
