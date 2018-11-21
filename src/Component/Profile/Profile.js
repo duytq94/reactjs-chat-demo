@@ -40,6 +40,12 @@ class Profile extends Component {
 
   onChangeAvatar = event => {
     if (event.target.files && event.target.files[0]) {
+      // Check this file is an image?
+      const prefixFiletype = event.target.files[0].type.toString()
+      if (prefixFiletype.indexOf('image/') !== 0) {
+        this.props.showToast(0, 'This file is not an image')
+        return
+      }
       this.newAvatar = event.target.files[0]
       this.setState({ photoUrl: URL.createObjectURL(event.target.files[0]) })
     } else {
@@ -61,38 +67,42 @@ class Profile extends Component {
           this.props.showToast(0, err.message)
         },
         () => {
-          this.updateUserInfo(true)
+          uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+            this.updateUserInfo(true, downloadURL)
+          })
         }
       )
     } else {
-      this.updateUserInfo(false)
+      this.updateUserInfo(false, null)
     }
   }
 
-  updateUserInfo = isUpdatePhotoUrl => {
-    myFireStorage
-      .ref()
-      .child(this.state.id)
-      .getDownloadURL()
-      .then(url => {
-        this.newPhotoUrl = url
-        myFirestore
-          .collection('users')
-          .doc(this.state.id)
-          .update({
-            nickname: this.state.nickname,
-            aboutMe: this.state.aboutMe,
-            photoUrl: url
-          })
-          .then(data => {
-            localStorage.setItem('nickname', this.state.nickname)
-            localStorage.setItem('aboutMe', this.state.aboutMe)
-            if (isUpdatePhotoUrl) {
-              localStorage.setItem('photoUrl', this.newPhotoUrl)
-            }
-            this.setState({ isLoading: false })
-            this.props.showToast(1, 'Update info success')
-          })
+  updateUserInfo = (isUpdatePhotoUrl, downloadURL) => {
+    let newInfo
+    if (isUpdatePhotoUrl) {
+      newInfo = {
+        nickname: this.state.nickname,
+        aboutMe: this.state.aboutMe,
+        photoUrl: downloadURL
+      }
+    } else {
+      newInfo = {
+        nickname: this.state.nickname,
+        aboutMe: this.state.aboutMe
+      }
+    }
+    myFirestore
+      .collection('users')
+      .doc(this.state.id)
+      .update(newInfo)
+      .then(data => {
+        localStorage.setItem('nickname', this.state.nickname)
+        localStorage.setItem('aboutMe', this.state.aboutMe)
+        if (isUpdatePhotoUrl) {
+          localStorage.setItem('photoUrl', this.newPhotoUrl)
+        }
+        this.setState({ isLoading: false })
+        this.props.showToast(1, 'Update info success')
       })
   }
 
@@ -116,6 +126,7 @@ class Profile extends Component {
             ref={el => {
               this.refInput = el
             }}
+            accept="image/*"
             className="viewInputFile"
             type="file"
             onChange={this.onChangeAvatar}

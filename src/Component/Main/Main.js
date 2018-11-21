@@ -105,7 +105,7 @@ class Main extends Component {
                   item.data().nickname
                 }`}</span>
                 <span className="textItem">{`About me: ${
-                  item.data().abouteMe ? item.data().abouteMe : 'Not available'
+                  item.data().aboutMe ? item.data().aboutMe : 'Not available'
                 }`}</span>
               </div>
             </button>
@@ -143,7 +143,10 @@ class Main extends Component {
           <div className="viewListUser"> {this.renderListUser()}</div>
           <div className="viewBoard">
             {this.state.currentPeerUser ? (
-              <ChatBoard currentPeerUser={this.state.currentPeerUser} />
+              <ChatBoard
+                currentPeerUser={this.state.currentPeerUser}
+                showToast={this.props.showToast}
+              />
             ) : (
               <WelcomeBoard
                 currentUserNickname={this.currentUserNickname}

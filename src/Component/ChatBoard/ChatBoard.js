@@ -2,7 +2,7 @@ import moment from 'moment'
 import React, { Component } from 'react'
 import ReactLoading from 'react-loading'
 import 'react-toastify/dist/ReactToastify.css'
-import { myFirestore } from '../../Config/MyFirebase'
+import { myFirestore, myFireStorage } from '../../Config/MyFirebase'
 import images from '../Themes/Images'
 import './ChatBoard.css'
 
@@ -21,6 +21,7 @@ export default class ChatBoard extends Component {
     this.currentPeerUser = this.props.currentPeerUser
     this.groupChatId = null
     this.removeListener = null
+    this.currentPhotoFile = null
   }
 
   componentDidUpdate() {
@@ -119,6 +120,49 @@ export default class ChatBoard extends Component {
       })
   }
 
+  onChoosePhoto = event => {
+    if (event.target.files && event.target.files[0]) {
+      this.currentPhotoFile = event.target.files[0]
+      // Check this file is an image?
+      const prefixFiletype = event.target.files[0].type.toString()
+      if (prefixFiletype.indexOf('image/') === 0) {
+        this.uploadPhoto()
+      } else {
+        this.props.showToast(0, 'This file is not an image')
+      }
+    } else {
+      this.props.showToast(0, 'Something wrong with input file')
+    }
+  }
+
+  uploadPhoto = () => {
+    if (this.currentPhotoFile) {
+      const timestamp = moment()
+        .valueOf()
+        .toString()
+
+      const uploadTask = myFireStorage
+        .ref()
+        .child(timestamp)
+        .put(this.currentPhotoFile)
+
+      uploadTask.on(
+        'state_changed',
+        null,
+        err => {
+          this.props.showToast(0, err.message)
+        },
+        () => {
+          uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+            this.onSendMessage(downloadURL, 1)
+          })
+        }
+      )
+    } else {
+      this.props.showToast(0, 'File is null')
+    }
+  }
+
   scrollToBottom = () => {
     if (this.messagesEnd) {
       this.messagesEnd.scrollIntoView({})
@@ -166,9 +210,10 @@ export default class ChatBoard extends Component {
             ref={el => {
               this.refInput = el
             }}
+            accept="image/*"
             className="viewInputGallery"
             type="file"
-            onChange={this.onChangeAvatar}
+            onChange={this.onChoosePhoto}
           />
 
           <img
