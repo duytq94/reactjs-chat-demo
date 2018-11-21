@@ -286,3 +286,17 @@ input::placeholder {
 .imgSticker:active {
   opacity: 0.5;
 }
+
+/* Say hi */
+.viewWrapSayHi {
+  margin-top: 20px;
+}
+.textSayHi {
+  color: #808888;
+  font-size: 14px;
+}
+.imgWaveHand {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+}

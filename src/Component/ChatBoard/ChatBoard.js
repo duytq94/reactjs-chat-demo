@@ -11,7 +11,7 @@ export default class ChatBoard extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isLoadHistory: false,
+      isLoading: false,
       isShowSticker: false,
       inputValue: ''
     }
@@ -52,7 +52,7 @@ export default class ChatBoard extends Component {
       this.removeListener()
     }
     this.listMessage.length = 0
-    this.setState({ isLoadHistory: true })
+    this.setState({ isLoading: true })
     if (
       this.hashString(this.currentUserId) <=
       this.hashString(this.currentPeerUser.id)
@@ -74,7 +74,7 @@ export default class ChatBoard extends Component {
               this.listMessage.push(change.doc.data())
             }
           })
-          this.setState({ isLoadHistory: false })
+          this.setState({ isLoading: false })
         },
         err => {
           this.props.showToast(0, err.toString())
@@ -123,16 +123,18 @@ export default class ChatBoard extends Component {
 
   onChoosePhoto = event => {
     if (event.target.files && event.target.files[0]) {
+      this.setState({ isLoading: true })
       this.currentPhotoFile = event.target.files[0]
       // Check this file is an image?
       const prefixFiletype = event.target.files[0].type.toString()
       if (prefixFiletype.indexOf(AppString.PREFIX_IMAGE) === 0) {
         this.uploadPhoto()
       } else {
+        this.setState({ isLoading: false })
         this.props.showToast(0, 'This file is not an image')
       }
     } else {
-      this.props.showToast(0, 'Something wrong with input file')
+      this.setState({ isLoading: false })
     }
   }
 
@@ -151,15 +153,18 @@ export default class ChatBoard extends Component {
         AppString.UPLOAD_CHANGED,
         null,
         err => {
+          this.setState({ isLoading: false })
           this.props.showToast(0, err.message)
         },
         () => {
           uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+            this.setState({ isLoading: false })
             this.onSendMessage(downloadURL, 1)
           })
         }
       )
     } else {
+      this.setState({ isLoading: false })
       this.props.showToast(0, 'File is null')
     }
   }
@@ -248,7 +253,7 @@ export default class ChatBoard extends Component {
         </div>
 
         {/* Loading */}
-        {this.state.isLoadHistory ? (
+        {this.state.isLoading ? (
           <div className="viewLoading">
             <ReactLoading
               type={'spin'}
@@ -382,7 +387,16 @@ export default class ChatBoard extends Component {
       })
       return viewListMessage
     } else {
-      return null
+      return (
+        <div className="viewWrapSayHi">
+          <span className="textSayHi">Say hi to new friend</span>
+          <img
+            className="imgWaveHand"
+            src={images.ic_wave_hand}
+            alt="wave hand"
+          />
+        </div>
+      )
     }
   }
 
