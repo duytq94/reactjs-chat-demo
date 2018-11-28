@@ -49,8 +49,8 @@ class Login extends Component {
             // Set new data since this is a new user
             myFirestore
               .collection('users')
-              .doc(this.state.id)
-              .update({
+              .doc(user.uid)
+              .set({
                 id: user.uid,
                 nickname: user.displayName,
                 aboutMe: '',
