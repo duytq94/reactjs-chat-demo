@@ -1,8 +1,13 @@
 {
   "name": "demo",
   "version": "0.1.0",
+  "author": "duytq94",
+  "description": "Chat web app",
+  "main": "public/electron.js",
+  "homepage": "./",
   "private": true,
   "dependencies": {
+    "electron-is-dev": "^1.0.1",
     "firebase": "^5.5.7",
     "moment": "^2.22.2",
     "react": "^16.6.0",
@@ -10,13 +15,17 @@
     "react-loading": "^2.0.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.1",
-    "react-toastify": "^4.4.1"
+    "react-toastify": "^4.4.1",
+    "yarn": "^1.13.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"SET BROWSER=none&&npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack": "electron-builder -c.extraMetadata.main=build/electron.js",
+    "preelectron-pack": "yarn build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -26,5 +35,12 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "electron": "^4.0.1",
+    "electron-builder": "^20.38.5",
+    "wait-on": "^3.2.0",
+    "webpack": "^4.19.1"
+  }
 }
