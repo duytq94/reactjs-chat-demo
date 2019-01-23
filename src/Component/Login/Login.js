@@ -36,31 +36,32 @@ class Login extends Component {
     this.setState({ isLoading: true })
     myFirebase
       .auth()
-      .signInWithPopup(this.provider)
+      .signInAnonymously()
       .then(async result => {
         let user = result.user
         if (user) {
           const result = await myFirestore
             .collection(AppString.NODE_USERS)
-            .where(AppString.ID, '==', user.uid)
+            .where(AppString.ID, '==', AppString.ANONYMOUS_ID)
             .get()
 
           if (result.docs.length === 0) {
             // Set new data since this is a new user
             myFirestore
               .collection('users')
-              .doc(user.uid)
+              .doc(AppString.ANONYMOUS_ID)
               .set({
-                id: user.uid,
-                nickname: user.displayName,
-                aboutMe: '',
-                photoUrl: user.photoURL
+                id: AppString.ANONYMOUS_ID,
+                nickname: AppString.ANONYMOUS_DISPLAY_NAME,
+                photoUrl: AppString.ANONYMOUS_PHOTO_URL,
+                aboutMe: AppString.ANONYMOUS_ABOUTE_ME
               })
               .then(data => {
                 // Write user info to local
-                localStorage.setItem(AppString.ID, user.uid)
-                localStorage.setItem(AppString.NICKNAME, user.displayName)
-                localStorage.setItem(AppString.PHOTO_URL, user.photoURL)
+                localStorage.setItem(AppString.ID, AppString.ANONYMOUS_ID)
+                localStorage.setItem(AppString.NICKNAME, AppString.ANONYMOUS_DISPLAY_NAME)
+                localStorage.setItem(AppString.PHOTO_URL, AppString.ANONYMOUS_PHOTO_URL)
+                localStorage.setItem(AppString.ABOUT_ME, AppString.ANONYMOUS_ABOUTE_ME)
                 this.setState({ isLoading: false }, () => {
                   this.props.showToast(1, 'Login success')
                   this.props.history.push('/main')
@@ -68,26 +69,17 @@ class Login extends Component {
               })
           } else {
             // Write user info to local
-            localStorage.setItem(AppString.ID, result.docs[0].data().id)
-            localStorage.setItem(
-              AppString.NICKNAME,
-              result.docs[0].data().nickname
-            )
-            localStorage.setItem(
-              AppString.PHOTO_URL,
-              result.docs[0].data().photoUrl
-            )
-            localStorage.setItem(
-              AppString.ABOUT_ME,
-              result.docs[0].data().aboutMe
-            )
+            localStorage.setItem(AppString.ID, AppString.ANONYMOUS_ID)
+            localStorage.setItem(AppString.NICKNAME, AppString.ANONYMOUS_DISPLAY_NAME)
+            localStorage.setItem(AppString.PHOTO_URL, AppString.ANONYMOUS_PHOTO_URL)
+            localStorage.setItem(AppString.ABOUT_ME, AppString.ANONYMOUS_ABOUTE_ME)
             this.setState({ isLoading: false }, () => {
               this.props.showToast(1, 'Login success')
               this.props.history.push('/main')
             })
           }
         } else {
-          this.props.showToast(0, 'User info not available')
+          this.props.showToast(0, 'Can not get data')
         }
       })
       .catch(err => {

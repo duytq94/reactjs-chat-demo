@@ -26,7 +26,7 @@ function createWindow() {
     width: 960,
     height: 540,
     resizable: false,
-    title: "Pharmacity Review"
+    title: "Chat app demo"
   });
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
   mainWindow.on('closed', function () {

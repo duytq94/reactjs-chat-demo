@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Root.css'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { Switch, Route, HashRouter } from 'react-router-dom'
 import Login from '../Login/Login'
 import Main from '../Main/Main'
 import Profile from '../Profile/Profile'
@@ -23,7 +23,7 @@ class Root extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div>
           <ToastContainer
             autoClose={2000}
@@ -44,13 +44,11 @@ class Root extends Component {
             <Route
               exact
               path="/profile"
-              render={props => (
-                <Profile showToast={this.showToast} {...props} />
-              )}
+              render={props => <Profile showToast={this.showToast} {...props} />}
             />
           </Switch>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     )
   }
 }
