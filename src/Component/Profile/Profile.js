@@ -116,26 +116,9 @@ class Profile extends Component {
 
         <img className="avatar" alt="Avatar" src={this.state.photoUrl} />
 
-        <div className="viewWrapInputFile">
-          <img
-            className="imgInputFile"
-            alt="icon gallery"
-            src={images.ic_input_file}
-            onClick={() => this.refInput.click()}
-          />
-          <input
-            ref={el => {
-              this.refInput = el
-            }}
-            accept="image/*"
-            className="viewInputFile"
-            type="file"
-            onChange={this.onChangeAvatar}
-          />
-        </div>
-
         <span className="textLabel">Nickname:</span>
         <input
+          disabled
           className="textInput"
           value={this.state.nickname ? this.state.nickname : ''}
           placeholder="Your nickname..."
@@ -143,13 +126,14 @@ class Profile extends Component {
         />
         <span className="textLabel">About me:</span>
         <input
+          disabled
           className="textInput"
           value={this.state.aboutMe ? this.state.aboutMe : ''}
           placeholder="Tell about yourself..."
           onChange={this.onChangeAboutMe}
         />
 
-        <button className="btnUpdate" onClick={this.uploadAvatar}>
+        <button disabled className="btnUpdate" onClick={this.uploadAvatar}>
           UPDATE
         </button>
 
