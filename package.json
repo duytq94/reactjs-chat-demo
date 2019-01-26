@@ -1,6 +1,6 @@
 {
-  "name": "demo",
-  "version": "0.1.0",
+  "name": "chat-desktop-app-demo",
+  "version": "1.0.0",
   "author": "duytq94",
   "description": "Chat web app",
   "main": "public/electron.js",
@@ -8,7 +8,7 @@
   "private": true,
   "dependencies": {
     "electron-is-dev": "^1.0.1",
-    "firebase": "^5.5.7",
+    "firebase": "^5.8.0",
     "moment": "^2.22.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",

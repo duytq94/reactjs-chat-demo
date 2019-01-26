@@ -93,7 +93,7 @@ class Login extends Component {
       <div className="viewRoot">
         <div className="header">CHAT DEMO</div>
         <button className="btnLogin" type="submit" onClick={this.onLoginPress}>
-          SIGN IN WITH GOOGLE
+          SIGN IN ANONYMOUS
         </button>
 
         {this.state.isLoading ? (

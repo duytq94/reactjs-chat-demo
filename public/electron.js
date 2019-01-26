@@ -23,10 +23,9 @@ app.on('activate', function () {
 function createWindow() {
   // Main
   mainWindow = new BrowserWindow({
-    width: 960,
-    height: 540,
-    resizable: false,
-    title: "Chat app demo"
+    width: 1024,
+    height: 1024,
+    title: "Chat desktop app demo"
   });
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
   mainWindow.on('closed', function () {
