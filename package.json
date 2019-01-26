@@ -15,8 +15,7 @@
     "react-loading": "^2.0.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.3",
-    "react-toastify": "^4.4.1",
-    "yarn": "^1.13.0"
+    "react-toastify": "^4.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,7 +24,7 @@
     "eject": "react-scripts eject",
     "electron-dev": "concurrently \"SET BROWSER=none&&npm start\" \"wait-on http://localhost:3000 && electron .\"",
     "electron-pack": "electron-builder -c.extraMetadata.main=build/electron.js",
-    "preelectron-pack": "yarn build"
+    "preelectron-pack": "react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -40,7 +39,6 @@
     "concurrently": "^4.1.0",
     "electron": "^4.0.1",
     "electron-builder": "^20.38.5",
-    "wait-on": "^3.2.0",
-    "webpack": "^4.19.1"
+    "wait-on": "^3.2.0"
   }
 }

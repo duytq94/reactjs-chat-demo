@@ -21,7 +21,6 @@ app.on('activate', function () {
 });
 
 function createWindow() {
-  // Main
   mainWindow = new BrowserWindow({
     width: 1024,
     height: 1024,
