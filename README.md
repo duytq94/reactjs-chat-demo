@@ -7,7 +7,7 @@
 * Check my general guidance to know more and how to do it: https://medium.com/@duytq94/bundling-your-react-web-to-a-desktop-app-with-electron-1b19ebcf8933
 
 ## Screenshot:
-<img src="https://raw.githubusercontent.com/duytq94/reactjs-chat-demo/master/screenshots/ElectronChatDemo.gif" height="80%" width="80%">
+<img src="https://raw.githubusercontent.com/duytq94/reactjs-chat-demo/build-electron/screenshots/ElectronChatDemo.gif" height="80%" width="80%">
 
 ## How to run:
 * Clone this project
