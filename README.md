@@ -1,16 +1,16 @@
-# Demo Web Chat
+# Demo Desktop Chat App
 
 ## Description:
-* A web chat made by ReactJS and Firebase.
+* A desktop chat app made by Electron, ReactJS, Firebase.
 * Support login with google account, chat with any user, send text, image and sticker, update avatar and profile.
-* Try at here: https://flutterchatdemo.firebaseapp.com/
-* Watch the video demo to clearly: https://youtu.be/kZYI-QgzplI
-* Check my general guidance to know more and how to do it: https://medium.com/@duytq94/building-web-chat-with-reactjs-and-firebase-e7f9654b661
+* Watch the video demo to clearly: https://youtu.be/41n_FTJtQIY
+* Check my general guidance to know more and how to do it: https://medium.com/@duytq94/bundling-your-react-web-to-a-desktop-app-with-electron-1b19ebcf8933
 
 ## Screenshot:
-<img src="https://raw.githubusercontent.com/duytq94/reactjs-chat-demo/master/screenshots/ReactJSChatDemo.gif" height="80%" width="80%">
+<img src="https://raw.githubusercontent.com/duytq94/reactjs-chat-demo/master/screenshots/ElectronChatDemo.gif" height="80%" width="80%">
 
 ## How to run:
 * Clone this project
 * Run `npm install` to install packages
-* Run `npm start` to start the server
+* Run `electron-dev` to start electron in dev mode
+* Run `electron-pack` to build release electron
