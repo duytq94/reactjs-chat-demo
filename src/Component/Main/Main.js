@@ -85,6 +85,7 @@ class Main extends Component {
         if (item.data().id !== this.currentUserId) {
           viewListUser.push(
             <button
+              key={index}
               className={
                 this.state.currentPeerUser &&
                 this.state.currentPeerUser.id === item.data().id
