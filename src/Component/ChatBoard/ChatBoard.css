@@ -1,4 +1,5 @@
 /* Chat board */
+
 .viewChatBoard {
   display: flex;
   flex: 1;
@@ -10,6 +11,10 @@
 .headerChatBoard {
   border-bottom: 1px solid #e8e8e8;
   padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .textHeaderChatBoard {
@@ -56,10 +61,6 @@
   margin-left: 10px;
 }
 
-.icOpenGallery:active {
-  opacity: 0.5;
-}
-
 .viewInputGallery {
   opacity: 0;
   position: absolute;
@@ -75,19 +76,11 @@
   margin-right: 5px;
 }
 
-.icOpenSticker:active {
-  opacity: 0.5;
-}
-
 .icSend {
   width: 30px;
   height: 30px;
   margin-left: 5px;
   margin-right: 5px;
-}
-
-.icSend:active {
-  opacity: 0.5;
 }
 
 .viewInput {
@@ -108,6 +101,7 @@ input::placeholder {
 }
 
 /* View item message */
+
 .viewItemRight {
   width: 300px;
   height: auto;
@@ -231,6 +225,7 @@ input::placeholder {
 }
 
 /* Item text */
+
 .textContentItem {
   font-size: 14px;
   word-break: break-all;
@@ -241,6 +236,7 @@ input::placeholder {
 }
 
 /* Item image */
+
 .imgItemRight {
   object-fit: cover;
   width: 300px;
@@ -269,6 +265,7 @@ input::placeholder {
 }
 
 /* Stickers */
+
 .viewStickers {
   display: flex;
   border-top: 1px solid #e8e8e8;
@@ -283,18 +280,21 @@ input::placeholder {
   object-fit: contain;
 }
 
-.imgSticker:active {
-  opacity: 0.5;
-}
-
 /* Say hi */
+
 .viewWrapSayHi {
   margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center
 }
+
 .textSayHi {
   color: #808888;
   font-size: 14px;
 }
+
 .imgWaveHand {
   width: 40px;
   height: 40px;

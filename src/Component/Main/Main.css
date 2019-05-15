@@ -41,10 +41,6 @@
   cursor: pointer;
 }
 
-.icLogout:active {
-  opacity: 0.5;
-}
-
 .icProfile {
   width: 25px;
   height: 25px;
@@ -52,10 +48,6 @@
   right: 0;
   margin-right: 80px;
   cursor: pointer;
-}
-
-.icProfile:active {
-  opacity: 0.5;
 }
 
 /* Dialog confirm */
@@ -104,9 +96,9 @@
 
 .btnYes {
   width: 100px;
+  height: 40px;
   font-weight: bold;
   margin-right: 20px;
-  padding: 5px;
   background-color: #203152;
   border: 0px;
   color: white;
@@ -114,16 +106,9 @@
   cursor: pointer;
 }
 
-.btnYes:active {
-  opacity: 0.5;
-}
-
-.btnYes:focus {
-  outline: 0;
-}
-
 .btnNo {
   width: 100px;
+  height: 40px;
   font-weight: bold;
   margin-left: 20px;
   padding: 5px;
@@ -132,14 +117,6 @@
   color: white;
   border-radius: 4px;
   cursor: pointer;
-}
-
-.btnNo:active {
-  opacity: 0.5;
-}
-
-.btnNo:focus {
-  outline: 0;
 }
 
 /* List user */
@@ -177,14 +154,6 @@
   justify-content: center;
 }
 
-.viewWrapItem:active {
-  opacity: 0.5;
-}
-
-.viewWrapItem:focus {
-  outline: 0;
-}
-
 .viewWrapItemFocused {
   border: none;
   display: flex;
@@ -194,14 +163,6 @@
   padding: 10px;
   align-items: center;
   justify-content: center;
-}
-
-.viewWrapItemFocused:active {
-  opacity: 0.5;
-}
-
-.viewWrapItemFocused:focus {
-  outline: 0;
 }
 
 .viewAvatarItem {
