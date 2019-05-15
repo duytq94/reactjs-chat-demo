@@ -85,6 +85,7 @@ class Main extends Component {
         if (item.data().id !== this.currentUserId) {
           viewListUser.push(
             <button
+              key={index}
               className={
                 this.state.currentPeerUser &&
                 this.state.currentPeerUser.id === item.data().id
@@ -181,8 +182,10 @@ class Main extends Component {
 
   renderDialogConfirmLogout = () => {
     return (
-      <div>
-        <div className="titleDialogConfirmLogout">Are you sure to logout?</div>
+      <div >
+        <div className="viewWrapTextDialogConfirmLogout">
+        <span className="titleDialogConfirmLogout">Are you sure to logout?</span>
+        </div>
         <div className="viewWrapButtonDialogConfirmLogout">
           <button className="btnYes" onClick={this.doLogout}>
             YES

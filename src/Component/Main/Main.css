@@ -41,10 +41,6 @@
   cursor: pointer;
 }
 
-.icLogout:active {
-  opacity: 0.5;
-}
-
 .icProfile {
   width: 25px;
   height: 25px;
@@ -54,11 +50,8 @@
   cursor: pointer;
 }
 
-.icProfile:active {
-  opacity: 0.5;
-}
-
 /* Dialog confirm */
+
 .viewCoverScreen {
   position: absolute;
   top: 0;
@@ -71,14 +64,20 @@
   justify-content: center;
 }
 
-.titleDialogConfirmLogout {
-  color: white;
+.viewWrapTextDialogConfirmLogout {
+  width: 300px;
+  height: 50px;
   background-color: #f5a623;
-  font-weight: bold;
-  padding: 20px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.titleDialogConfirmLogout {
+  color: white;
+  font-weight: bold;
   font-size: 18px;
 }
 
@@ -86,6 +85,7 @@
   flex-direction: row;
   height: 100px;
   width: 300px;
+  min-width: 300px;
   background-color: white;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -96,9 +96,9 @@
 
 .btnYes {
   width: 100px;
+  height: 40px;
   font-weight: bold;
   margin-right: 20px;
-  padding: 5px;
   background-color: #203152;
   border: 0px;
   color: white;
@@ -106,16 +106,9 @@
   cursor: pointer;
 }
 
-.btnYes:active {
-  opacity: 0.5;
-}
-
-.btnYes:focus {
-  outline: 0;
-}
-
 .btnNo {
   width: 100px;
+  height: 40px;
   font-weight: bold;
   margin-left: 20px;
   padding: 5px;
@@ -126,15 +119,8 @@
   cursor: pointer;
 }
 
-.btnNo:active {
-  opacity: 0.5;
-}
-
-.btnNo:focus {
-  outline: 0;
-}
-
 /* List user */
+
 .viewListUser {
   overflow-y: scroll;
   max-height: 90vh;
@@ -168,14 +154,6 @@
   justify-content: center;
 }
 
-.viewWrapItem:active {
-  opacity: 0.5;
-}
-
-.viewWrapItem:focus {
-  outline: 0;
-}
-
 .viewWrapItemFocused {
   border: none;
   display: flex;
@@ -185,14 +163,6 @@
   padding: 10px;
   align-items: center;
   justify-content: center;
-}
-
-.viewWrapItemFocused:active {
-  opacity: 0.5;
-}
-
-.viewWrapItemFocused:focus {
-  outline: 0;
 }
 
 .viewAvatarItem {
