@@ -1,198 +1,198 @@
 .root {
-  text-align: center;
-  flex-direction: column;
-  display: flex;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
 }
 
 .header {
-  font-weight: bold;
-  font-size: 20px;
-  color: #203152;
-  background-color: #f5a623;
-  padding: 20px;
-  box-shadow: 0px 4px 4px #808888;
-  flex-direction: row;
+    font-weight: bold;
+    font-size: 20px;
+    color: #203152;
+    background-color: #f5a623;
+    padding: 20px;
+    box-shadow: 0 4px 4px #808888;
+    flex-direction: row;
 }
 
 .body {
-  display: flex;
-  flex-direction: 'row';
-  padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    padding-top: 5px;
 }
 
 .viewLoading {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icLogout {
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  right: 0;
-  margin-right: 30px;
-  cursor: pointer;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 0;
+    margin-right: 30px;
+    cursor: pointer;
 }
 
 .icProfile {
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  right: 0;
-  margin-right: 80px;
-  cursor: pointer;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 0;
+    margin-right: 80px;
+    cursor: pointer;
 }
 
 /* Dialog confirm */
 
 .viewCoverScreen {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .viewWrapTextDialogConfirmLogout {
-  width: 300px;
-  height: 50px;
-  background-color: #f5a623;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center
+    width: 300px;
+    height: 50px;
+    background-color: #f5a623;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center
 }
 
 .titleDialogConfirmLogout {
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .viewWrapButtonDialogConfirmLogout {
-  flex-direction: row;
-  height: 100px;
-  width: 300px;
-  min-width: 300px;
-  background-color: white;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+    flex-direction: row;
+    height: 100px;
+    width: 300px;
+    min-width: 300px;
+    background-color: white;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .btnYes {
-  width: 100px;
-  height: 40px;
-  font-weight: bold;
-  margin-right: 20px;
-  background-color: #203152;
-  border: 0px;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+    margin-right: 20px;
+    background-color: #203152;
+    border: 0px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .btnNo {
-  width: 100px;
-  height: 40px;
-  font-weight: bold;
-  margin-left: 20px;
-  padding: 5px;
-  background-color: #dd4b39;
-  border: 0px;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+    margin-left: 20px;
+    padding: 5px;
+    background-color: #dd4b39;
+    border: 0px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 /* List user */
 
 .viewListUser {
-  overflow-y: scroll;
-  max-height: 90vh;
-  padding-top: 10px;
-  padding-bottom: 10px;
+    overflow-y: scroll;
+    max-height: 90vh;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .viewListUser::-webkit-scrollbar-track {
-  padding: 2px 0;
-  background-color: #e8e8e8;
+    padding: 2px 0;
+    background-color: #e8e8e8;
 }
 
 .viewListUser::-webkit-scrollbar {
-  width: 6px;
+    width: 6px;
 }
 
 .viewListUser::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #203152;
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #203152;
 }
 
 .viewWrapItem {
-  border: none;
-  display: flex;
-  flex-direction: 'row';
-  background-color: #ffffff;
-  width: 330px;
-  padding: 10px;
-  align-items: center;
-  justify-content: center;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    width: 330px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 .viewWrapItemFocused {
-  border: none;
-  display: flex;
-  flex-direction: 'row';
-  background-color: #e8e8e8;
-  width: 330px;
-  padding: 10px;
-  align-items: center;
-  justify-content: center;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    background-color: #e8e8e8;
+    width: 330px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 .viewAvatarItem {
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    object-fit: cover;
 }
 
 .viewWrapContentItem {
-  flex-direction: column;
-  display: flex;
-  flex: 1;
-  margin-left: 15px;
-  color: #203152;
-  word-wrap: break-word;
+    flex-direction: column;
+    display: flex;
+    flex: 1;
+    margin-left: 15px;
+    color: #203152;
+    word-wrap: break-word;
 }
 
 .textItem {
-  display: block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 240px;
-  text-align: left;
-  font-size: 14px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 240px;
+    text-align: left;
+    font-size: 14px;
 }
 
 .viewBoard {
-  display: flex;
-  flex: 1;
-  max-height: 90vh;
+    display: flex;
+    flex: 1;
+    max-height: 90vh;
 }
